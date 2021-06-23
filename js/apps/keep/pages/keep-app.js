@@ -1,9 +1,11 @@
 import noteList from '../cmps/note-list.js';
+import noteAdd from '../cmps/note-add.js';
 import { keepService } from '../services/keep-service.js';
 
 export default {
   template: `
     <section class="keep-app">
+      <note-add></note-add>
       <noteList :notes="notes"></noteList>
     </section>
       `,
@@ -28,5 +30,6 @@ export default {
 
   components: {
     noteList,
+    noteAdd,
   },
 };
