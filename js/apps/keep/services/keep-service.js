@@ -7,6 +7,7 @@ _createNotes();
 export const keepService = {
   query,
   getById,
+  addNote,
 };
 
 function query() {
@@ -15,6 +16,10 @@ function query() {
 
 function getById(noteId) {
   return storageService.get(KEEPS_KEY, noteId);
+}
+
+function addNote(note) {
+  return storageService.post(KEEPS_KEY, note);
 }
 
 function _createNotes() {

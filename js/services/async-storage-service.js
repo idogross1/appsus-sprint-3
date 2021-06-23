@@ -37,7 +37,6 @@ function postMany(entityType, newEntities) {
 
 function put(entityType, updatedEntity) {
   return query(entityType).then((entities) => {
-    console.log('books', entities);
     const idx = entities.findIndex((entity) => entity.id === updatedEntity.id);
     entities.splice(idx, 1, updatedEntity);
     _save(entityType, entities);

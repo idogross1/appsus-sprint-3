@@ -1,9 +1,11 @@
+import noteTxtForm from './note-txt-form.js';
+
 export default {
   template: `
         <section class="note-add" >
             <form>
                 <component :is="noteType"></component>
-                <!-- <button @click="add">Write a note...</button> -->
+                <button @click="noteType='noteTxtForm'">Write a note...</button>
                 <button>img</button>
                 <button>list</button>
             </form>
@@ -18,5 +20,9 @@ export default {
 
   methods: {
     addNoteTxt() {},
+  },
+
+  components: {
+    noteTxtForm,
   },
 };
