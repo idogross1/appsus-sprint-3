@@ -8,6 +8,7 @@ export const keepService = {
   query,
   getById,
   addNote,
+  deletetNote,
 };
 
 function query() {
@@ -20,6 +21,10 @@ function getById(noteId) {
 
 function addNote(note) {
   return storageService.post(KEEPS_KEY, note);
+}
+
+function deletetNote(noteId) {
+  return storageService.remove(KEEPS_KEY, noteId);
 }
 
 function _createNotes() {

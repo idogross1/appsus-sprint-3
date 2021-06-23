@@ -25,20 +25,17 @@ export default {
   },
 
   methods: {
-    makeNote(ev) {
-      console.log(ev);
-      console.log('adding note', this.note);
-      console.log('new todo', this.newTodo);
+    makeNote() {
       this.note.type = 'noteTodos';
       this.note.isPinned = false;
       this.$emit('newNote', this.note);
     },
 
     addTodo() {
-      console.log('new todo', this.newTodo);
-
+      if (!this.newTodo) return;
       this.note.info.todos.push({ txt: this.newTodo, isDone: false });
       this.newTodo = '';
+      this.note.label = '';
     },
   },
 };
