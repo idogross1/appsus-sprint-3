@@ -11,23 +11,20 @@ export default {
         <div class="controls"> 
             <email-status :emails="emails"> </email-status>
             <email-filter @filter="filter"> </email-filter>
+            <button @click="composeEmail" >Compose</button>
         </div>
-        <email-compose @send="" v-if="compose"></email-compose>
+        <email-compose @send="addEmail" v-if="compose"></email-compose>
         <email-list :emails="emailsToShow" @remove="" @readEmail="" />
-
-        
-            hi
         </section>
     `,
     data(){
         return {
             emails:[],
-            compose: true,
+            compose: false,
         }
     },
     created(){
-        emailService.query() //TODO convert this to a method
-            .then(emails => this.emails = emails)
+        this.loadEmails();
     },
     computed: {
         emailsToShow(){
@@ -41,14 +38,25 @@ export default {
         emailCompose
     },
     methods: {
+        loadEmails(){
+            emailService.query()
+            .then(emails => this.emails = emails)
+        },
         filter(filterStr){
             console.log(filterStr);
+        },
+        addEmail(email){
+            console.log('adding email in app...', email);
+            emailService.addEmail(email.subject, email.body)
+            .then(() => this.loadEmails())
+            this.compose = false;
+        },
+        composeEmail(){
+            this.compose = true;
+        },
+        readEmail(email){
+            console.log('reading email');
         }
     },
-    addEmail(subject, body){
-        console.log('adding email in app...');
-        // this.compose = false;
-        // emailService.addEmail(subject, body);
-    }
 
 };

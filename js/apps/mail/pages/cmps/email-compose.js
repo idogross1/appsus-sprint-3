@@ -5,8 +5,8 @@ export default {
         <section class="email-compose">
         compose an email
         <form @submit.prevent="send">
-            <input type="text" placeholder="subject" v-bind="email.subject"/>
-            <textarea  rows="8" cols="80"  placeholder="enter email text here" v-bind="email.body"></textarea>
+            <input type="text" placeholder="subject" v-model="email.subject"/>
+            <textarea  rows="8" cols="80"  placeholder="enter email text here" v-model="email.body"></textarea>
             <button>send</button>
         </form>
 
@@ -22,9 +22,10 @@ export default {
     },
     methods: {
         send(){
-            console.log('sending form..');
-            // this.$emit('send', this.email)
-            emailService.addEmail(this.email.subject, this.email.body);
+            console.log('sending form..', this.email);
+            this.$emit('send', this.email)
+            // emailService.addEmail(this.email.subject, this.email.body);
+
         }
     }
 }

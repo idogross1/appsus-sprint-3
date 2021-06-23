@@ -2,7 +2,7 @@
 
 
 export default {
-    props=['currEmail'],
+    props: ['currEmail'],
     template: `
         <section class="email-details">
             these are the email details
