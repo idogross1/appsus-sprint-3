@@ -6,8 +6,9 @@ import emailCompose from "../cmps/email-compose.js";
 
 export default {
   template: `
-        <section v-if="emails.length" class="email-app ">
-        <email-filter @filter="filter"> </email-filter>
+        <section v-if="emails.length" class="email-app flex flex-col">
+                <div class="logo">LOGO IMG</div>
+                <email-filter @filter="filter"> </email-filter>
         <!-- <router-view/>contains <email-list/> or <email-content/> or <email-compose/> -->
         <div class="flex">
             <div class="controls"> 
