@@ -1,4 +1,33 @@
+@import "../cmps/email-preview.css";
+@import "../cmps/email-status.css";
+
+
 .email-compose{
     position: fixed;
     background-color: mediumseagreen;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.controls{
+    width: 250px;
+    background-color: lightgreen;
+}
+
+/*email list*/
+.email-list{
+    flex: 1;
+    background-color: lightblue;
+    list-style: none;
+}
+
+/*email filter*/
+.email-filter input{
+    height: 46px;
+    width: 44%;
+    border-radius: 7px;
+    
+    /* color: green; */
 }

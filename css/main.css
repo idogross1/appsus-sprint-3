@@ -1,2 +1,15 @@
-@import "apps/mail/cmps/email-status.css";
 @import "apps/mail/pages/email-app.css";
+
+/*helpers*/
+*{
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+

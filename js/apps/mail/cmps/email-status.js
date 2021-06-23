@@ -4,7 +4,6 @@ export default {
     props: ['emails'],
     template:`
         <section class="email-status">
-            this is the email status
             <p>Read: {{readEmails}}</p>
             <p>Unread: {{unreadEmails}}</p>
             <p>Total: {{totalEmails}}</p>
