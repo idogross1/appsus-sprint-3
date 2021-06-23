@@ -5,7 +5,7 @@ import { keepService } from '../services/keep-service.js';
 export default {
   template: `
     <section class="keep-app">
-      <note-add></note-add>
+      <note-add @newNote="addNewNote"></note-add>
       <noteList :notes="notes"></noteList>
     </section>
       `,
@@ -25,6 +25,10 @@ export default {
       keepService.query().then((notes) => {
         this.notes = notes;
       });
+    },
+
+    addNewNote(note) {
+      keepService.addNote(note).then(() => this.loadNotes());
     },
   },
 

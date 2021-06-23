@@ -12,12 +12,6 @@ export default {
     </li>
   </ul>`,
 
-  watch: {
-    notes() {
-      console.log(this.notes);
-    },
-  },
-
   components: {
     noteImg,
     noteTxt,
