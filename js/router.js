@@ -4,7 +4,7 @@ import keepApp from './apps/keep/pages/keep-app.js';
 
 const routes = [
   { path: '/', component: homePage },
-  { path: '/email', component: emailApp },
+  { path: '/mail', component: emailApp },
   { path: '/keep', component: keepApp },
 ];
 
