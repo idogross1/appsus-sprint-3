@@ -1,5 +1,5 @@
 import homePage from './pages/home-page.js';
-import emailApp from './apps/mail/pages/email-app.js';
+import emailApp from './apps/mail/pages/pages/email-app.js';
 import keepApp from './apps/keep/pages/keep-app.js';
 
 const routes = [
