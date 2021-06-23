@@ -5,10 +5,10 @@ export default {
     template: `
         <section class="email-list">
             this is the email list
-            <li v-for="email in emails" @click="" @delete="">
+            <li v-for="email in emails" @click="readEmail" @delete="">
                 <div class="star" @click="">✰</div>
                 <email-preview :email="email" />
-
+                <router-link :to="'/mail/' +email.id ">Read</router-link>
 
             </li>
 
@@ -17,5 +17,11 @@ export default {
 
     components: {
         emailPreview
+    },
+    methods: {
+        readEmail(){
+            console.log('reading the email');
+            const { emailId } = this.$route.params;
+        }
     }
 }
