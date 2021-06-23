@@ -47,21 +47,22 @@ function _createEmails(){
             {id: utilService.makeId(), subject: 'subject4', body: 'this is email #4', isRead: true, sentAt: 1551133730594},
         ]
 
-        emails.forEach(email => {
-            emails.push(email)
-        })
+        // emails.forEach(email => {
+        //     emails.push(email)
+        //     console.log('just added', email);
+        // })
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
     return emails
 }
 
-function _createEmail(subject, body){
-    const email = {
-            id:utilService.makeId(),
-            subject,
-            body,
-            isRead: false,
-            sentAt: new Date()
-    }
-    return email;
-}
+// function _createEmail(subject, body){
+//     const email = {
+//             id:utilService.makeId(),
+//             subject,
+//             body,
+//             isRead: false,
+//             sentAt: new Date()
+//     }
+//     return email;
+// }

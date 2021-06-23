@@ -1,6 +1,11 @@
 @import "../cmps/email-preview.css";
 @import "../cmps/email-status.css";
 
+.email-app{
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+}
 
 .email-compose{
     position: fixed;
@@ -21,6 +26,19 @@
     flex: 1;
     background-color: lightblue;
     list-style: none;
+    padding: 10px;
+}
+
+.email-list li {
+    height: 30px;
+    border-bottom: 1px solid grey;
+    
+    align-items: center;
+    justify-content: space-between;
+}
+
+.email-list li:first-child{
+    margin-top: 1px solid grey;;
 }
 
 /*email filter*/
@@ -28,6 +46,8 @@
     height: 46px;
     width: 44%;
     border-radius: 7px;
-    
+    margin-bottom: 7px;
     /* color: green; */
 }
+
+

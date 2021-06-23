@@ -34,9 +34,15 @@ export default {
                         return email
                     } )
                     .then(email =>{
-                        emailService.updateEmail(email)
                         console.log(this.email)
+                        return emailService.updateEmail(email)
                     } )
+                    .then(email => {
+                        return emailService.getEmailById(email.id)
+                    })
+                    .then(email => {
+                        console.log('in serice',email);
+                    })
             }
         }
     },

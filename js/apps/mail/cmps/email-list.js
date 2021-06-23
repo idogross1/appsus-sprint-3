@@ -4,13 +4,12 @@ export default {
     props: ['emails'],
     template: `
         <section class="email-list">
-            <li v-for="email in emails" @delete="">
-                <div class="star" @click="">✰</div>
-                    
+            <li v-for="email in emails" @delete="" class="flex">
                 <router-link :to="'/details/' +email.id ">
-                    <email-preview @read="readEmail" :email="email" />
-                </router-link>
-
+                <email-preview @read="readEmail" :email="email" />
+            </router-link>
+            <button>mark as read/unread</button>
+            <div class="star" @click="">✰</div>
             </li>
 
         </section>
@@ -21,8 +20,6 @@ export default {
     },
     methods: {
         readEmail(email){
-            // debugger;
-            // console.log('reading the email');
             console.log('email id thats read', emailId);
             this.$emit('readEmail', emailId);
             
