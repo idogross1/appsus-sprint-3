@@ -24,7 +24,6 @@ export default {
         send(){
             console.log('sending form..', this.email);
             this.$emit('send', this.email)
-            // emailService.addEmail(this.email.subject, this.email.body);
 
         }
     }
