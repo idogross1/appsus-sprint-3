@@ -1,6 +1,7 @@
 import noteImg from './note-img.js';
 import noteTxt from './note-txt.js';
 import noteTodos from './note-todo.js';
+import noteToolbar from './note-toolbar.js';
 
 export default {
   props: ['notes'],
@@ -8,18 +9,31 @@ export default {
   template: `
   <ul class="note-list">
     <li class="note-item" v-for="note in notes" :key="note.id">
-        <component :is="note.type" :note="note" @click.native="onNote(note.id)"></component>
-        <button @click="onDeleteNote(note.id)">x</button>
+        <component :is="note.type" :data="note.data" :isEditable="isEditable" @updateData="updateData($event, note.id)"></component>
+        <!-- <button @click="toggleEdit">edit</button> -->
+        <!-- <button @click="onDeleteNote(note.id)">x</button> -->
+        <noteToolbar :noteId="note.id" @delete="deleteNode($event)" @toggleEdit=toggleEdit($event)></noteToolbar>
     </li>
   </ul>`,
 
+  data() {
+    return {
+      isEditable: false,
+    };
+  },
+
   methods: {
-    onDeleteNote(noteId) {
+    deleteNode(noteId) {
+      console.log(noteId);
       this.$emit('deleteNote', noteId);
     },
 
-    onNote(noteId) {
-      this.$emit('select', noteId);
+    toggleEdit() {
+      this.isEditable = !this.isEditable;
+    },
+
+    updateData(data, noteId) {
+      this.$emit('update', { noteId, data });
     },
   },
 
@@ -27,5 +41,6 @@ export default {
     noteImg,
     noteTxt,
     noteTodos,
+    noteToolbar,
   },
 };

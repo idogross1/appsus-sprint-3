@@ -7,10 +7,7 @@ export default {
   template: `
     <section class="keep-app">
       <note-add @newNote="addNewNote"></note-add>
-      <noteList @deleteNote="deleteNote" @select="selectNote" :notes="notes"></noteList>
-      <div v-if="edit" contenteditable="true">
-       <note-edit :note="noteSelected"></note-edit>
-      </div>
+      <noteList @deleteNote="deleteNote" @update="updateNote" :notes="notes"></noteList>
     </section>
       `,
 
@@ -41,12 +38,10 @@ export default {
       keepService.deletetNote(noteId).then(() => this.loadNotes());
     },
 
-    selectNote(noteId) {
-      console.log(noteId + ' selected');
-      this.edit = !this.edit;
+    updateNote({ noteId, data }) {
       keepService.getById(noteId).then((note) => {
-        console.log(note);
-        this.noteSelected = note;
+        note.data = data;
+        keepService.updateNote(note);
       });
     },
   },

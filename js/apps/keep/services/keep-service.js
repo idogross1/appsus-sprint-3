@@ -9,6 +9,7 @@ export const keepService = {
   getById,
   addNote,
   deletetNote,
+  updateNote,
 };
 
 function query() {
@@ -27,6 +28,10 @@ function deletetNote(noteId) {
   return storageService.remove(KEEPS_KEY, noteId);
 }
 
+function updateNote(note) {
+  return storageService.put(KEEPS_KEY, note);
+}
+
 function _createNotes() {
   let notes = utilService.loadFromStorage(KEEPS_KEY);
   if (!notes || !notes.length) {
@@ -35,31 +40,22 @@ function _createNotes() {
         id: '13a',
         type: 'noteTxt',
         isPinned: false,
-        info: {
-          txt: 'Fullstack Me Baby!',
-        },
+        data: 'Fullstack Me Baby!',
       },
       {
         id: '13b',
+        isPinned: false,
         type: 'noteImg',
-        info: {
-          url: 'img/keep/001.jpg',
-          title: 'Me playing Mi',
-        },
-        style: {
-          backgroundColor: '#00d',
-        },
+        data: 'img/keep/001.jpg',
       },
       {
         id: '13c',
+        isPinned: false,
         type: 'noteTodos',
-        info: {
-          label: 'How was it:',
-          todos: [
-            { txt: 'Do that', doneAt: false },
-            { txt: 'Do this', doneAt: false },
-          ],
-        },
+        data: [
+          { id: utilService.makeId(2), txt: 'Do that', isDone: false },
+          { id: utilService.makeId(2), txt: 'Do this', isDone: false },
+        ],
       },
     ];
     utilService.saveToStorage(KEEPS_KEY, notes);

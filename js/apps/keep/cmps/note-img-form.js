@@ -1,8 +1,7 @@
 export default {
   template: `
     <form class="note-img-form">
-        <input v-model="note.info.label" type="text" placeholder="Title">
-        <input v-model="note.info.url" type="text" placeholder="Enter Image URL">
+        <input v-model="note.data" type="text" placeholder="Enter Image URL">
         <button  @click.prevent='makeNote'>+</button>
     </form>
     `,
@@ -10,10 +9,7 @@ export default {
   data() {
     return {
       note: {
-        info: {
-          title: '',
-          url: '',
-        },
+        data: '',
       },
     };
   },

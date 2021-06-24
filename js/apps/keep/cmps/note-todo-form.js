@@ -1,11 +1,10 @@
 export default {
   template: `
       <form class="note-todos-form">
-          <input v-model="note.info.label" type="text" placeholder="Title">
           <input type="text" v-model="newTodo"  placeholder="todo">
           <button @click="addTodo">add todo</button>
           <ul>
-              <li v-for="todo in note.info.todos">{{todo.txt}}</li>
+              <li v-for="todo in note.data">{{todo.txt}}</li>
           </ul>
 
           <button @click="makeNote">+</button>
@@ -15,10 +14,7 @@ export default {
   data() {
     return {
       note: {
-        info: {
-          label: '',
-          todos: [],
-        },
+        data: [],
       },
       newTodo: '',
     };
@@ -33,7 +29,7 @@ export default {
 
     addTodo() {
       if (!this.newTodo) return;
-      this.note.info.todos.push({ txt: this.newTodo, isDone: false });
+      this.note.data.push({ txt: this.newTodo, isDone: false });
       this.newTodo = '';
       this.note.label = '';
     },

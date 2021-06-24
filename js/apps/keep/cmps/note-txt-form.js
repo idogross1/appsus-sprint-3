@@ -1,8 +1,7 @@
 export default {
   template: `
     <form class="note-txt-form">
-        <input v-model="note.info.label" type="text" placeholder="Title">
-        <input v-model="note.info.txt" type="text" placeholder="Write a note...">
+        <input v-model="note.data" type="text" placeholder="Write a note...">
         <button  @click.prevent='makeNote'>+</button>
     </form>
     `,
@@ -10,10 +9,7 @@ export default {
   data() {
     return {
       note: {
-        info: {
-          label: '',
-          txt: '',
-        },
+        data: '',
       },
     };
   },
