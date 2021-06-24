@@ -24,7 +24,6 @@ export default {
                 console.log(emailId);
                 emailService.getEmailById(emailId)
                     .then(email => {
-                        console.log(this.email);
                         this.email = email;
                         return email;
                     } )
@@ -37,12 +36,12 @@ export default {
                         console.log(this.email)
                         return emailService.updateEmail(email)
                     } )
-                    .then(email => {
-                        return emailService.getEmailById(email.id)
-                    })
-                    .then(email => {
-                        console.log('in serice',email);
-                    })
+                    // .then(email => {
+                    //     return emailService.getEmailById(email.id)
+                    // })
+                    // .then(email => {
+                    //     console.log('in serice',email);
+                    // })
             }
         }
     },

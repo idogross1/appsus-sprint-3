@@ -57,7 +57,8 @@ function _createEmail(subject, body){
             subject,
             body,
             isRead: false,
-            sentAt: new Date()
+            sentAt: new Date(),
+            isStarred: false,
     }
     return email;
 }

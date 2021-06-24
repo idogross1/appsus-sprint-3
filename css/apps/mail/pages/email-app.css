@@ -29,16 +29,28 @@
     padding: 10px;
 }
 
+.email-list .select{
+    border: 1px solid black;
+    height: 15px;
+    width: 15px;
+}
+
 .email-list li {
     height: 30px;
     border-bottom: 1px solid grey;
     
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end
 }
 
 .email-list li:first-child{
     margin-top: 1px solid grey;;
+}
+
+.email-list .email-link{
+    flex: 1;
+    flex-basis: 1;
+
 }
 
 /*email filter*/
