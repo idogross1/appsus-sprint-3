@@ -33,7 +33,7 @@ export default {
                 
                 <email-status :emails="emails"> </email-status>
             </div>
-            <email-compose @send="addEmail" v-if="compose"></email-compose>
+            <email-compose @send="addEmail" @closeCompose="closeCompose" v-if="compose"></email-compose>
             <email-list @replyToEmail=addEmail @toggleStar="toggleStar" @selectEmails="selectEmails" :emails="emailsToShow" @remove="" @readEmail="readEmail" @unReadEmail="unReadEmail"/>
         </div>
         <email-details v-if="currEmail"></email-details>
@@ -55,6 +55,7 @@ export default {
     created(){
         this.loadEmails();
     },
+
     computed: {
         emailsToShow(){
             var filteredEmails = this.emails;
@@ -118,11 +119,6 @@ export default {
         loadEmails(){
             emailService.query()
             .then(emails => this.emails = emails)
-            .then(emails => {
-                emails.forEach(email => {
-                    console.log(email.sentAt);
-                });
-            })
         },
         filterEmails(filterStr){
             this.filter.filterStr = filterStr.toLowerCase();
@@ -133,13 +129,19 @@ export default {
             .then(() => this.loadEmails())
             this.compose = false;
         },
+        closeCompose(){
+            this.compose = false;
+        },
         composeEmail(){
             this.compose = true;
+            debugger;
         },
         readEmail(emailId){
             console.log('reading email in app');
+            
             emailService.getEmailById(emailId)
                 .then(email =>{
+                    this.currEmail = email
                     email.isRead = true
                     return email
                 } )

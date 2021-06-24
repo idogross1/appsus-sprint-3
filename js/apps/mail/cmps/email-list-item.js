@@ -4,10 +4,10 @@ import emailPreview from './email-preview.js'
 export default {
     props: ['email'],
     template: `
-    <section class="email-list-item flex" v-bind:class="isReadClass">
-        <router-link :to="'/details/' +email.id " class="email-link clean-link">
-            <email-preview @read=""  :email="email" />
-        </router-link>
+    <section class="email-list-item flex" v-bind:class="isReadClass" :class="{'long-preview': isLong}">
+        <!-- <router-link :to="'/details/' +email.id " class="email-link clean-link"> -->
+        <email-preview @toggleLength="toggleLength" :email="email" class="email-link"/>
+        <!-- </router-link> -->
         <button v-if="email.isRead" @click="toggleReadEmail()">mark as unread</button>
         <button v-else @click="toggleReadEmail()">mark as read</button>
         <!-- <router-link :to="''/edit/'+email.subject+'/'+email.body+'">reply</router-link> -->
@@ -30,7 +30,8 @@ export default {
     data(){
         return {
             currEmail: this.email,
-            isSelected: false
+            isSelected: false,
+            isLong: false,
         }
     },
     methods: {
@@ -54,6 +55,9 @@ export default {
         },
         replyToEmail(email){
             
+        },
+        toggleLength(){
+            this.isLong = !this.isLong;
         }
     },
     components: {

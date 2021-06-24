@@ -1,8 +1,16 @@
-.email-preview p{
-    /* text-overflow: clip; */
-    line-height: 30px;
+
+
+.email-preview .show-all{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: gray;
+    color: white;
+    height: 30px;
+    text-align: center;
+}
+
+.email-preview .long-text{
     overflow: hidden;
-white-space: nowrap;
-max-width: 1070px;
-width: 50vw;
+    word-wrap: break-word;
 }
