@@ -1,8 +1,9 @@
 @import './note-img.css';
+@import url('./note-todo.css');
 
 .note-item {
-  background-color: lightsalmon;
-  border: 2px solid black;
+  background-color: white;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   /* gap: 1.5rem;

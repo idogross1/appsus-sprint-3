@@ -24,7 +24,7 @@ export default {
     makeNote() {
       this.note.type = 'noteTodos';
       this.note.isPinned = false;
-      this.$emit('newNote', this.note);
+      this.$emit('newNote', { ...this.note });
       this.note.data = [];
     },
 

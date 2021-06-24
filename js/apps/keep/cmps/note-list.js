@@ -10,10 +10,11 @@ export default {
 
   template: `
   <ul class="note-list clean-list">
-    <li class="note-item" v-for="note in notes" :key="note.id">
-        <component :edit="isEditable" :is="note.type" :data="note.data" :id="note.id" @updateData="updateData($event, note.id)">
+    <li class="note-item" v-for="note in notes" :key="note.id" :style="{backgroundColor : note.color}">
+      <button class="btn-pin" @click="onPinNote(note.id)">pin</button>
+        <component  :edit="isEditable" :is="note.type" :data="note.data" :id="note.id" @updateData="updateData($event, note.id)" @color="changeColor($event,note.id)">
         </component>
-        <noteToolbar :noteId="note.id" @delete="deleteNode($event)" @editNote="editNote($event)" @pickColor="pickColor(note.id)"></noteToolbar>
+        <noteToolbar  :noteId="note.id" @delete="deleteNode($event)" @editNote="editNote($event)" @pickColor="pickColor(note.id)"></noteToolbar>
         <!-- <pick-color v-if="isPickColor"></pick-color> -->
 
     </li>
@@ -22,7 +23,6 @@ export default {
   data() {
     return {
       isEditable: false,
-      // isPickColor: false,
     };
   },
 
@@ -43,9 +43,21 @@ export default {
     },
 
     pickColor(noteId) {
+      // open color menue
       console.log('note Id--note-list', noteId);
       // this.isPickColor = !this.isPickColor;
       eventBus.$emit('color', noteId);
+    },
+
+    changeColor(color, noteId) {
+      console.log('color--note-list ', color);
+      console.log('noteId-note-list ', noteId);
+      this.$emit('color', { noteId, color });
+    },
+
+    onPinNote(noteId) {
+      console.log('pin-note--note-list', noteId);
+      this.$emit('pin', noteId);
     },
   },
 

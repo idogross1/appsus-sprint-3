@@ -5,7 +5,7 @@ export default {
 
   template: `
         <article class = "todo-task">
-            <p :contenteditable="edit" @input="updateTodo">{{todo.txt}}</p>
+            <p :contenteditable="edit" @input="updateTodo" @click="todoDone" :class="{marked: todo.isDone}">{{todo.txt}}</p>
         </article>
         `,
 
@@ -15,6 +15,11 @@ export default {
       this.todo.txt = ev.target.innerText;
       console.log(this.todo);
       this.$emit('updateTodo', this.todo);
+    },
+
+    todoDone() {
+      this.todo.isDone = !this.todo.isDone;
+      console.log('todo--todo-cmp', this.todo.isDone);
     },
   },
 };

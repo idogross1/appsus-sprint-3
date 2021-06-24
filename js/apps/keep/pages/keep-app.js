@@ -1,19 +1,26 @@
 import noteList from '../cmps/note-list.js';
 import noteAdd from '../cmps/note-add.js';
 import noteEdit from '../cmps/note-edit.js';
+import noteSearch from '../cmps/note-search.js';
 import { keepService } from '../services/keep-service.js';
 
 export default {
   template: `
     <section class="keep-app">
+      <note-search @filter="setFilter"></note-search>
       <note-add @newNote="addNewNote"></note-add>
-      <note-list @deleteNote="deleteNote" @update="updateNote" :notes="notes"></note-list>
+      <note-list v-if="filterdNotes" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="filterdNotes"></note-list>
+      <note-list v-if="pinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="pinnedNotes"></note-list>
+      <note-list v-if="unPinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="unPinnedNotes"></note-list>
     </section>
       `,
 
   data() {
     return {
       notes: [],
+      pinnedNotes: [],
+      unPinnedNotes: [],
+      filterdNotes: [],
       noteSelected: {},
       edit: false,
     };
@@ -27,6 +34,8 @@ export default {
     loadNotes() {
       keepService.query().then((notes) => {
         this.notes = notes;
+        this.unPinnedNotes = notes.filter((note) => !note.isPinned);
+        this.pinnedNotes = notes.filter((note) => note.isPinned);
       });
     },
 
@@ -48,11 +57,61 @@ export default {
         })
         .then(() => this.loadNotes());
     },
+
+    changeColor({ noteId, color }) {
+      console.log('noteId--keep-app', noteId);
+      console.log('color--keep-app', color);
+      keepService
+        .getById(noteId)
+        .then((note) => {
+          note.color = color;
+          console.log(note);
+          keepService.updateNote(note);
+        })
+        .then(() => this.loadNotes());
+    },
+
+    pinNote(noteId) {
+      console.log('pin-note--keep-app', noteId);
+      keepService
+        .getById(noteId)
+        .then((note) => {
+          note.isPinned = !note.isPinned;
+          keepService.updateNote(note);
+        })
+        .then(() => this.loadNotes());
+    },
+
+    setFilter(str) {
+      console.log('str--keep-app', str);
+      this.filter = str;
+      this.filterdNotes = this.notesToShow();
+      if (!this.filter) this.filterdNotes = [];
+    },
+
+    notesToShow() {
+      const searchStr = this.filter;
+      const notes = this.notes.filter((note) => {
+        if (
+          note.type === 'noteTxt' &&
+          note.data.toLowerCase().includes(searchStr)
+        )
+          return note;
+        if (note.type === 'noteTodo') {
+          note.data.filter((todo) => {
+            console.log(todo);
+          });
+        }
+      });
+
+      return notes;
+    },
   },
 
   components: {
     noteList,
     noteAdd,
     noteEdit,
+    noteSearch,
   },
 };

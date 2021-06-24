@@ -5,11 +5,11 @@ export default {
   props: ['data', 'id'],
 
   template: `
-    <article class = "note-txt">
+    <article class ="note-txt">
       <div class="note-content" :contenteditable="isEditing" @input="update">
         <p>{{data}}</p>
       </div>
-      <pick-color v-if="isPickColor"></pick-color>
+      <pick-color v-if="isPickColor" @color="changeColor"></pick-color>
     </article>
     `,
 
@@ -45,6 +45,12 @@ export default {
       if (this.id === noteId) {
         this.isPickColor = !this.isPickColor;
       }
+    },
+
+    changeColor(color) {
+      console.log('color--note-txt ', color);
+      this.$emit('color', color);
+      this.isPickColor = false;
     },
   },
 

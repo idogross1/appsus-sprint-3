@@ -1,0 +1,7 @@
+.note-todo {
+  position: relative;
+}
+
+.marked {
+  text-decoration: line-through;
+}
