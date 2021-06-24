@@ -2,12 +2,17 @@ import { emailService } from "../services/email-service.js";
 
 
 export default {
-    // props: ['currEmail'],
     template: `
-        <section class="email-details">
-            these are the email details
-            {{email}}
-            <router-link :to="'/mail'">Close</router-link>
+        <section class="email-details email-container flex flex-col">
+            <!-- <div class="email-container flex flex-col"> -->
+                <!-- <div class="email-subject"></div> -->
+                <p class="message">Current email</p>
+                <textarea class="email-subject" rows="1" cols="80">{{email.subject}} </textarea>
+                <textarea class="emailBody" rows="8" cols="80">{{email.body}}</textarea>
+                <router-link class="email-button" :to="'/mail'">Close</router-link>
+                
+            <!-- </div> -->
+    
         </section>
     `,
 
@@ -20,8 +25,11 @@ export default {
         '$route.params.emailId' : {
             immediate: true,
             handler(){
+
                 const { emailId } = this.$route.params;
+
                 console.log(emailId);
+                debugger;
                 emailService.getEmailById(emailId)
                     .then(email => {
                         this.email = email;
@@ -36,12 +44,6 @@ export default {
                         console.log(this.email)
                         return emailService.updateEmail(email)
                     } )
-                    // .then(email => {
-                    //     return emailService.getEmailById(email.id)
-                    // })
-                    // .then(email => {
-                    //     console.log('in serice',email);
-                    // })
             }
         }
     },

@@ -1,5 +1,7 @@
 @import "../cmps/email-preview.css";
 @import "../cmps/email-status.css";
+@import "../cmps/email-list.css";
+@import "../cmps/email-list-item.css";
 
 .email-app{
     padding-right: 50px;
@@ -7,11 +9,55 @@
     padding-top: 20px;
 }
 
-.email-compose{
+/************email container*******************/
+.email-container{
     position: fixed;
-    background-color: mediumseagreen;
+    /* background-color: mediumseagreen; */
+    /* border-radius: 10px; */
+    /* padding: 20px; */
+    /* margin: 0; */
+    /* 580*450 */
+}
+.email-container>*{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+.email-container *{
+    line-height: 40px;
+}
+@media screen and (max-width: 500) {
+    
+}
+
+@media screen and (max-width: 980) {
+    .email-container{
+        /* line-height: 40px; */
+    }
+}
+
+@media screen and (max-width: 1130) {
+    
+}
+
+
+/* BP 1130 980 500 */
+
+.email-container .message{
+    background-color: #404040;
+    color: white;
+    border-radius: 10px 10px 0 0 ;
+}
+
+.email-container .subject{
+    color: #777777;
+}
+
+.email-container .email-button{
+    background-color: #1a73e8;
+    color: white;
+}
+/*************/
 .bold {
     font-weight: bold;
 }
@@ -21,36 +67,8 @@
     background-color: lightgreen;
 }
 
-/*email list*/
-.email-list{
-    flex: 1;
-    background-color: lightblue;
-    list-style: none;
-    padding: 10px;
-}
-
-.email-list .select{
-    border: 1px solid black;
-    height: 15px;
-    width: 15px;
-}
-
-.email-list li {
-    height: 30px;
-    border-bottom: 1px solid grey;
-    
-    align-items: center;
-    justify-content: flex-end
-}
-
-.email-list li:first-child{
-    margin-top: 1px solid grey;;
-}
-
-.email-list .email-link{
-    flex: 1;
-    flex-basis: 1;
-
+.email-header{
+        height: 60px;
 }
 
 /*email filter*/
@@ -61,5 +79,7 @@
     margin-bottom: 7px;
     /* color: green; */
 }
+
+
 
 

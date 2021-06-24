@@ -2,7 +2,7 @@
 export default {
     props: ['email'],
     template: `
-        <section class="email-preview">
+        <section class="email-preview flex">
             <p v-bind:class="isReadClass"><span class="bold">{{email.subject}}</span> {{email.body}}</p>
         </section>
     `,
