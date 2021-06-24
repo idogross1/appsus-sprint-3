@@ -1,0 +1,18 @@
+@import './note-img.css';
+
+.note-item {
+  background-color: lightsalmon;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.5rem;
+  padding: 0.5rem 1rem; */
+  max-width: 240px;
+  min-width: 200px;
+  height: fit-content;
+  border-radius: 7px;
+  word-wrap: break-word;
+  break-inside: avoid;
+  margin-top: 0;
+  margin-bottom: 10px;
+}

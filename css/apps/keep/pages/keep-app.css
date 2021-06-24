@@ -1,0 +1,9 @@
+@import url('../cmps/keep-note.css');
+@import url('../cmps/note-list.css');
+
+.keep-app {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

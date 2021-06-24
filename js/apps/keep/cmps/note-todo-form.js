@@ -3,7 +3,7 @@ export default {
       <form class="note-todos-form">
           <input type="text" v-model="newTodo"  placeholder="todo">
           <button @click="addTodo">add todo</button>
-          <ul>
+          <ul class="clean-list">
               <li v-for="todo in note.data">{{todo.txt}}</li>
           </ul>
 
@@ -31,7 +31,6 @@ export default {
       if (!this.newTodo) return;
       this.note.data.push({ txt: this.newTodo, isDone: false });
       this.newTodo = '';
-      this.note.label = '';
     },
   },
 };

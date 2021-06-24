@@ -1,15 +1,15 @@
+import { eventBus } from '../../../services/event-bus-service.js';
+
 export default {
-  props: ['data', 'isEditable'],
+  props: ['data', 'id'],
 
   template: `
       <article class = "note-img">
-          <div class="note-content"  v-if="!isEditable">
-            <img :src="data">
-            {{isEditable}}
-        </div>
-        <div class="edit-note" v-if="isEditable" @input="update" contenteditable>
-            <p >{{noteCopy}}</p>
-            {{isEditable}}
+          <div class="note-content"  v-if="!isEditing">
+              <img :src="data">
+            </div>
+            <div class="edit-note" v-if="isEditing" @input="update" >
+                <p contenteditable>{{noteCopy}}</p>
             </div>
         </article>
       `,
@@ -21,9 +21,19 @@ export default {
     };
   },
 
+  created() {
+    eventBus.$on('edit', this.editNote);
+  },
+
   methods: {
     update(ev) {
       this.$emit('updateData', ev.target.innerText);
+    },
+
+    editNote(noteId) {
+      if (this.id === noteId) {
+        this.isEditing = !this.isEditing;
+      }
     },
   },
 };
