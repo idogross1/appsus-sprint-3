@@ -17,23 +17,23 @@ export default {
             <div class="flex email-header">
                 <div class="logo">LOGO IMG</div>
                 <email-filter @filter="filterEmails"> </email-filter>
-                <button @click="sortEmails('date')">sort by date</button>
-                <button @click="sortEmails('title')">sort by title</button>
+                <button class="sort" @click="sortEmails('date')">sort by date</button>
+                <button class="sort" @click="sortEmails('title')">sort by title</button>
             </div>  
-        <!-- <router-view/>contains <email-list/> or <email-content/> or <email-compose/> -->
         <div class="flex">
             <div class="controls"> 
                 <button @click="composeEmail" >Compose</button>
-                <email-status :emails="emails"> </email-status>
-                <email-compose @send="addEmail" v-if="compose"></email-compose>
                 <!-- <email-edit @send="addEmail" v-if="compose"></email-edit> -->
                 <div @click="readEmails">Mark as read</div>
                 <div @click="unreadEmails">Mark as unread</div>
-                <div @click="filterByRead('read')">show read</div>
-                <div @click="filterByRead('unread')">show unread</div>
-                <div @click="filterByRead('all')">show all</div>
+                <div @click="setReadFilter('read')">show read</div>
+                <div @click="setReadFilter('unread')">show unread</div>
+                <div @click="setReadFilter('all')">show all</div>
                 <div @click="showStarred">show starred</div>
+                
+                <email-status :emails="emails"> </email-status>
             </div>
+            <email-compose @send="addEmail" v-if="compose"></email-compose>
             <email-list @replyToEmail=addEmail @toggleStar="toggleStar" @selectEmails="selectEmails" :emails="emailsToShow" @remove="" @readEmail="readEmail" @unReadEmail="unReadEmail"/>
         </div>
         <email-details v-if="currEmail"></email-details>
@@ -57,8 +57,6 @@ export default {
     },
     computed: {
         emailsToShow(){
-            console.log('getting emials to show...');
-
             var filteredEmails = this.emails;
             if (this.filter.filterStr === '' && this.filter.readStatus === ALL && this.filter.starred === false) return this.emails
 
@@ -87,11 +85,7 @@ export default {
             return filteredEmails;
         }
     },
-    watch:{
-
-    },
-
-    components: {
+     components: {
         emailList,
         emailFilter,
         emailStatus,
@@ -115,12 +109,7 @@ export default {
                 if (sortBy === 'date') return email1.sentAt - email2.sentAt;
                 if (sortBy === 'title') return email1.subject.localeCompare(email2.subject);
                 })
-            this.emails.forEach(email => {
-                console.log(email.sentAt);
-            });
-            
         },
-
 
         showStarred(){
             this.filter.readStatus = ALL
@@ -183,13 +172,11 @@ export default {
         selectEmails(selectedEmails){
             this.selectedEmails = selectedEmails.slice();
         },
-        filterByRead(readStatus){
+        setReadFilter(readStatus){
             this.filter.starred = false;
             if (readStatus === 'all') this.filter.readStatus = 'all';
             else if (readStatus === 'read') this.filter.readStatus = 'read';
             else if (readStatus === 'unread') this.filter.readStatus = 'unread'; 
-            
-            // console.log('filtering by read', this.filter);
         }
     },
 

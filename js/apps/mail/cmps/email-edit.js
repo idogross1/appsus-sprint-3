@@ -20,6 +20,10 @@ export default {
             }
         }
     },
+    // created(){
+    //     if (!this.$route.params.emailSubject) this.email.subject = '';
+    //     if (!this.$route.params.emailBody) this.email.subject = '';
+    // }
     methods: {
         send(){
             console.log('sending form..', this.email);

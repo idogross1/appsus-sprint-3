@@ -4,3 +4,18 @@
     background-color: #f5f7f7;
     font-weight: bold;
 }
+
+.email-list-item:hover {
+    background-color: rgb(253, 250, 87);
+}
+
+.email-list-item *:not(:first-child){
+    margin-left: 10px;
+}
+
+.email-list-item{
+    height: 30px;
+    border-bottom: 1px solid grey;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -12,12 +12,7 @@
     width: 15px;
 }
 
-.email-list .email-list-item{
-    height: 30px;
-    border-bottom: 1px solid grey;
-    align-items: center;
-    justify-content: flex-end
-}
+
 
 .email-list li:first-child{
     margin-top: 1px solid grey;;

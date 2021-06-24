@@ -5,15 +5,15 @@ export default {
     props: ['email'],
     template: `
     <section class="email-list-item flex" v-bind:class="isReadClass">
-        <router-link :to="'/details/' +email.id " class="email-link">
+        <router-link :to="'/details/' +email.id " class="email-link clean-link">
             <email-preview @read=""  :email="email" />
         </router-link>
         <button v-if="email.isRead" @click="toggleReadEmail()">mark as unread</button>
         <button v-else @click="toggleReadEmail()">mark as read</button>
         <!-- <router-link :to="''/edit/'+email.subject+'/'+email.body+'">reply</router-link> -->
-        <router-link :to="'/edit/'+email.subject+'/'+email.body" @send="replyToEmail">reply</router-link>
+        <router-link class="clean-link" :to="'/edit/'+email.subject+'/'+email.body" @send="replyToEmail">reply</router-link>
         <div class="star" @click="toggleStar()" :class="isStarredClass" >✰</div>
-        <div class="select" @click="select()"><p v-if="isSelected()">✓</p></div>
+        <div class="select" @click="select()"><p v-if="isSelected">✓</p></div>
     </section>
     `,
     computed: {
@@ -22,11 +22,15 @@ export default {
         },
         isReadClass(){
             return {'read': this.email.isRead, 'unread': !this.email.isRead}
-        }
+        },
+        // isSelectedClass(){
+        //     return {'selected': this.isSelected}
+        // }
     },
     data(){
         return {
-            currEmail: this.email
+            currEmail: this.email,
+            isSelected: false
         }
     },
     methods: {
@@ -38,9 +42,10 @@ export default {
             console.log(this.currEmail);
             this.$emit('toggleStar', this.currEmail)
         },
-        isSelected(){
-            this.$emit('isSeected', this.email)
-        },
+        // isSelected(){
+        //     this.isSelected = !this.isSelected;
+        //     this.$emit('isSelected', this.email)
+        // },
         select(){
             this.$emit('select', this.email)
         },

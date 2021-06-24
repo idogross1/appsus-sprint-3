@@ -24,15 +24,17 @@ p {
   flex-direction: column;
 }
 
-<<<<<<< HEAD
 body{
     font-family: sans-serif;
 }
 
-=======
 .clean-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
->>>>>>> a683e7ca4d8167096e884a8346058afae7434c41
+
+.clean-link {
+    text-decoration: none;
+    color: inherit;
+}
