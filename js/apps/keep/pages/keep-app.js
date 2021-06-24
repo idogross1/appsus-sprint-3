@@ -39,10 +39,14 @@ export default {
     },
 
     updateNote({ noteId, data }) {
-      keepService.getById(noteId).then((note) => {
-        note.data = data;
-        keepService.updateNote(note);
-      });
+      console.log('test');
+      keepService
+        .getById(noteId)
+        .then((note) => {
+          note.data = data;
+          keepService.updateNote(note);
+        })
+        .then(() => this.loadNotes());
     },
   },
 

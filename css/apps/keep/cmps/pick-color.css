@@ -1,0 +1,49 @@
+.pick-color {
+  width: 100px;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.377);
+  position: absolute;
+  left: 90px;
+  top: 35px;
+  border-radius: 8px;
+}
+
+.color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.color-1 {
+  background-color: #ffadad;
+}
+.color-2 {
+  background-color: #ffd6a5;
+}
+.color-3 {
+  background-color: #fdffb6;
+}
+.color-4 {
+  background-color: #caffbf;
+}
+.color-5 {
+  background-color: #9bf6ff;
+}
+.color-6 {
+  background-color: #a0c4ff;
+}
+.color-7 {
+  background-color: #bdb2ff;
+}
+.color-8 {
+  background-color: #ffc6ff;
+}
+.color-9 {
+  background-color: #fffffc;
+}

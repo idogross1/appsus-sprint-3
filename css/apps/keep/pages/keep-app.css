@@ -1,6 +1,7 @@
 @import url('../cmps/keep-note.css');
 @import url('../cmps/note-list.css');
-
+@import url('../cmps/pick-color.css');
+@import url('../cmps/note-txt.css');
 .keep-app {
   background-color: lightblue;
   display: flex;

@@ -5,12 +5,12 @@ export default {
 
   template: `
       <article class = "note-img">
-          <div class="note-content"  v-if="!isEditing">
-              <img :src="data">
+          <div class="note-content">
+              <img v-if="!isEditing"  :src="data">
+                <p v-if="isEditing" :contenteditable="isEditing" @input="update">{{noteCopy}}</p>
             </div>
-            <div class="edit-note" v-if="isEditing" @input="update" >
-                <p contenteditable>{{noteCopy}}</p>
-            </div>
+            <!-- <div class="edit-note" v-if="isEditing" @input="update" >
+            </div> -->
         </article>
       `,
 

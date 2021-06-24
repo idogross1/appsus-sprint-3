@@ -19,6 +19,7 @@ export default {
       this.note.type = 'noteImg';
       this.note.isPinned = false;
       this.$emit('newNote', this.note);
+      this.note.data = '';
     },
   },
 };

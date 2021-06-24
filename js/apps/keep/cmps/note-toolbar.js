@@ -3,9 +3,10 @@ export default {
 
   template: `
         <section class="note-toolbar">
-            <button @click="onDeleteNote">x</button>
-            <button v-if="edit" @click.stop="onEditNote">edit</button>
-            <button v-if="!edit" @click.stop="onEditNote">save</button>
+          <button @click="onDeleteNote">x</button>
+          <button v-if="edit" @click.stop="onEditNote">edit</button>
+          <button v-if="!edit" @click.stop="onEditNote">save</button>
+          <button @click="onPickColor">color</button>
         </section>
     `,
 
@@ -23,6 +24,10 @@ export default {
     onEditNote() {
       this.edit = !this.edit;
       this.$emit('editNote', this.noteId);
+    },
+
+    onPickColor() {
+      this.$emit('pickColor');
     },
 
     // onSaveNote() {
