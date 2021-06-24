@@ -1,23 +1,38 @@
-@import "apps/mail/pages/email-app.css";
+@import 'apps/mail/pages/email-app.css';
+@import './apps/keep/pages/keep-app.css';
 
 /*helpers*/
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-col {
-    flex-direction: column;
+  flex-direction: column;
 }
 
+<<<<<<< HEAD
 body{
     font-family: sans-serif;
 }
 
+=======
+.clean-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+>>>>>>> a683e7ca4d8167096e884a8346058afae7434c41

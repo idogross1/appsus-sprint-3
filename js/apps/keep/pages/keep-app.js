@@ -7,7 +7,7 @@ export default {
   template: `
     <section class="keep-app">
       <note-add @newNote="addNewNote"></note-add>
-      <noteList @deleteNote="deleteNote" @update="updateNote" :notes="notes"></noteList>
+      <note-list @deleteNote="deleteNote" @update="updateNote" :notes="notes"></note-list>
     </section>
       `,
 

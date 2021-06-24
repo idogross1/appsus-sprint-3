@@ -21,6 +21,12 @@ function getById(noteId) {
 }
 
 function addNote(note) {
+  if (note.type === 'noteTodos') {
+    note.data.forEach((todo) => {
+      todo.id = utilService.makeId(2);
+      console.log(todo);
+    });
+  }
   return storageService.post(KEEPS_KEY, note);
 }
 
