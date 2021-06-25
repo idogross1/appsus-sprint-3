@@ -3,14 +3,14 @@ import { eventBus } from "../services/event-bus-service.js";
 export default {
     template: `
         <div class="user-msg" :class="msg.type">
-            <p>{{msg.txt}}</p>
+            <p>{{msg.text}}</p>
         </div>
     `,
     data() {
         return {
             // msg: null,
             msg: {
-                text: 'I am a message',
+                text: '',
                 type: 'success' 
             }  
         };
@@ -27,7 +27,8 @@ export default {
             console.log('showing the message', msg);
             this.msg = msg;
             setTimeout(() => {
-                this.msg = null;
+                // this.msg = null;
+                this.msg.text=''
             }, 3000);
         }
     }

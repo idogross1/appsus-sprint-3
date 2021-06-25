@@ -59,6 +59,7 @@
     display: flex;
     align-items: flex-start;
     white-space:pre;
+    word-wrap: break-word;
     overflow:hidden;
     flex:1;
     text-overflow:ellipsis;
