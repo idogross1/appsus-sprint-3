@@ -31,6 +31,8 @@ export default {
                 .then(() =>
                 {
                     this.$router.push('/mail')
+                    var msg = {type: 'success', txt: 'email sent!'}
+                    eventBus.$emit('show-msg', msg)
                 })
 
         }

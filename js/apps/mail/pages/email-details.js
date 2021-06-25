@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-service.js";
-
+import { eventBus } from "../../../services/event-bus-service.js";
 
 export default {
     template: `
@@ -30,6 +30,7 @@ export default {
             .then(()=>{
                 this.$router.push('/mail')
             })
+            .then(()=> eventBus.$emit('show-msg', $msg))
         }
     },
     created(){
@@ -47,7 +48,6 @@ export default {
                 const { emailId } = this.$route.params;
 
                 console.log(emailId);
-                debugger;
                 emailService.getEmailById(emailId)
                     .then(email => {
                         this.email = email;

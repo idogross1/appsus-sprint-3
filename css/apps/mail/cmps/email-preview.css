@@ -10,7 +10,10 @@
     text-align: center;
 }
 
-.email-preview .long-text{
-    overflow: hidden;
-    word-wrap: break-word;
+.email-preview {
+    white-space:nowrap;
+    overflow:hidden;
+    flex:1;
+    text-overflow:ellipsis;
 }
+

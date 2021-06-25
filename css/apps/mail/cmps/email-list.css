@@ -4,7 +4,10 @@
     /* background-color: lightblue; */
     list-style: none;
     padding: 10px;
+    max-width: 70vw;
 }
+
+
 
 .email-list .select{
     border: 1px solid black;

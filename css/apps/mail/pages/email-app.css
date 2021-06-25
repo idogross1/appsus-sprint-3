@@ -17,7 +17,32 @@
     /* padding: 20px; */
     /* margin: 0; */
     /* 580*450 */
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80vw;
+    border: 1px solid rgb(245, 231, 231);
 }
+
+.email-container textarea{
+    display: block;
+    width: 75vw;
+}
+@media screen and (min-width: 550px){
+    .email-container textarea{
+        width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+
+    }
+}
+
+@media screen and (min-width: 825px) {
+    .email-container textarea{
+        /* overflow: hidden; */
+        width: 80%;
+    }
+}
+
 .email-container>*{
     padding-left: 20px;
     padding-right: 20px;
@@ -80,7 +105,7 @@
 }
 
 
-/*email header*/
+
 .email-header{
     padding:10px;
     align-items: center;
@@ -89,10 +114,24 @@
     background-color: rgb(236, 202, 8);
 }
 
-.email-header .x{
+/*for small screen*/
+@media screen and (max-width: 825px) {
+    .email-header{
+        width: 70vw;
+    }
+    
+}
+
+.email-compose .x{
     /* justify-self: right; */
     position: relative;
     right: -80%;
+    color: #b3b3b3;
+}
+
+.email-compose .x:hover{
+    background-color: #737373;
+    color: white;
 }
 
 .email-filter{
@@ -108,13 +147,37 @@
     margin-bottom: 7px;
     /* color: green; */
 }
-.email-header .logo {
-    width: 250px; /*same as .controls*/
+.email-header .logo{
+    width: 100px
 }
+
 
 .email-header .sort{
     height:22px;
     margin-left: 10px;
+}
+
+.email-header .mob-menu img{
+    height: 46px;
+}
+
+.controls{
+    display: none;
+}
+
+/*for big screen*/
+@media screen and (min-width: 825px) {
+    .email-header .mob-menu{
+        display: none;
+    } 
+    .controls{
+        display: block;
+    }
+
+    .email-header .logo {
+        width: 250px; /*same as .controls*/
+    }
+    
 }
 
 
