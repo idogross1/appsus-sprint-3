@@ -5,6 +5,10 @@
     font-weight: bold;
 }
 
+.read{
+    /* color: black; */
+}
+
 .email-list-item:hover {
     background-color: rgb(253, 250, 87);
 }
@@ -20,7 +24,46 @@
     justify-content: flex-end;
 }
 
+/******************************/
+
+.email-list .toggle-read-icon{
+    display: inline;
+    margin: 5px;
+}
+
+.email-list .toggle-read-icon img{
+    width: 15px
+}
+
+.email-list .toggle-read-text{
+    display: none;
+}
+
+/*for big screen*/
+@media screen and (min-width: 825px) {
+    .email-list .toggle-read-icon{
+        display: none
+    }
+
+    .email-list .toggle-read-text{
+        display: inherit    ;
+    }
+}
+
+/******************************/
 
 .long-preview {
     height: 150px;
+    display: flex;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    white-space:pre;
+    overflow:hidden;
+    flex:1;
+    text-overflow:ellipsis;
+}
+
+.email-list-item .toggle-read-text{
+    width: 110px;
 }

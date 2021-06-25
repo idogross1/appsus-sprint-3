@@ -3,8 +3,6 @@ export default {
     template: `
     <div class="long-text" :class="{'long': isLong}" @click="toggleDescriptionLength">
         {{preparedText}}
-            <!-- <p class="length" v-if="!isLong" @click="toggleDescriptionLength">show more</p>
-            <p class="length" v-if="isLong" @click="toggleDescriptionLength">show less</p> -->
     </div>
     `,
     data(){
@@ -14,8 +12,8 @@ export default {
     },
     methods: {
         toggleDescriptionLength(){
+            console.log('toggling desc length...');
             this.isLong = !this.isLong;
-            this.$emit('toggleLength')
         }
     },
     computed: {

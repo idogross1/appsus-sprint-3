@@ -4,6 +4,9 @@ import emailFilter from "../cmps/email-filter.js";
 import emailStatus from "../cmps/email-status.js";
 import emailCompose from "../cmps/email-compose.js";
 import emailEdit from "../cmps/email-edit.js";
+import emailDetails from "./email-details.js"
+import {eventBus} from '../../../services/event-bus-service.js'
+import userMsg from "../../../cmps/user-msg.js";
 
 const ALL = 'all'
 const READ = 'read'
@@ -15,30 +18,33 @@ export default {
   template: `
         <section v-if="emails.length" class="email-app flex flex-col">
             <div class="flex email-header">
+                <div class="mob-menu" @click="toggleMenu"><img src="../../../../img/hamburger.png"/></div>
                 <div class="logo">LOGO IMG</div>
                 <email-filter @filter="filterEmails"> </email-filter>
                 <button class="sort" @click="sortEmails('date')">sort by date</button>
                 <button class="sort" @click="sortEmails('title')">sort by title</button>
             </div>  
-        <div class="flex">
-            <div class="controls"> 
-                <button @click="composeEmail" >Compose</button>
-                <!-- <email-edit @send="addEmail" v-if="compose"></email-edit> -->
-                <div @click="readEmails">Mark as read</div>
-                <div @click="unreadEmails">Mark as unread</div>
-                <div @click="setReadFilter('read')">show read</div>
-                <div @click="setReadFilter('unread')">show unread</div>
-                <div @click="setReadFilter('all')">show all</div>
-                <div @click="showStarred">show starred</div>
-                
-                <email-status :emails="emails"> </email-status>
-            </div>
-            <email-compose @send="addEmail" @closeCompose="closeCompose" v-if="compose"></email-compose>
-            <email-list @replyToEmail=addEmail @toggleStar="toggleStar" @selectEmails="selectEmails" :emails="emailsToShow" @remove="" @readEmail="readEmail" @unReadEmail="unReadEmail"/>
-        </div>
-        <email-details v-if="currEmail"></email-details>
-        </section>
-    `,
+            <div class="flex">
+                <!-- <div class="controls" :class="{'hidden': isMobMenuHidden}>  -->
+                    <div class="controls" :class="{'hidden': isMobMenuHidden}"> 
+                        <button @click="composeEmail" >Compose</button>
+                        <!-- <email-edit @send="addEmail" v-if="compose"></email-edit> -->
+                        <div @click="readEmails">Mark as read</div>
+                        <div @click="unreadEmails">Mark as unread</div>
+                        <div @click="setReadFilter('read')">show read</div>
+                        <div @click="setReadFilter('unread')">show unread</div>
+                        <div @click="setReadFilter('all')">show all</div>
+                        <div @click="showStarred">show starred</div>
+                        
+                        <email-status :emails="emails"> </email-status>
+                    </div>
+                    <email-list @click="testFunction"  @replyToEmail=addEmail @toggleStar="toggleStar" @selectEmails="selectEmails" :emails="emailsToShow" @readEmail="readEmail" @unReadEmail="unreadEmail"/>
+                    <email-compose @send="addEmail" @closeCompose="closeCompose" v-if="compose"></email-compose>
+                    <!-- <email-details v-if="currEmail"></email-details> -->
+                </div>
+                <user-msg/>
+            </section>
+            `,
     data(){
         return {
             emails:[],
@@ -49,11 +55,17 @@ export default {
                 readStatus: ALL,
                 starred: false
             },
-            selectedEmails: []
+            selectedEmails: [],
+            isMobMenuHidden: true,
         }
     },
     created(){
         this.loadEmails();
+        var message = {
+            text: 'book review saved',
+            type: 'success'
+        }
+        eventBus.$emit('show-msg', message)
     },
 
     computed: {
@@ -91,9 +103,19 @@ export default {
         emailFilter,
         emailStatus,
         emailCompose,
-        emailEdit
+        emailEdit,
+        emailDetails,
+        userMsg
     },
     methods: {
+        testFunction(){
+            console.log('this is a test function');
+        },
+        // showEmail(email){
+        //     console.log('reading & showing the email...');
+        //     this.currEmail = email;
+        //     this.$router.push('/mail/'+email.id)
+        // },  
         toggleStar(email){
             console.log('toggling star...', email);
             emailService.getEmailById(email.id)
@@ -101,7 +123,6 @@ export default {
                     email.isStarred = !(email.isStarred);
                     return email;
                 })
-                .then(email => emailService.updateEmail(email))
                 .then(() => this.loadEmails())
         },
         sortEmails(sortBy){
@@ -127,6 +148,7 @@ export default {
             console.log('adding email in app...', email);
             emailService.addEmail(email.subject, email.body)
             .then(() => this.loadEmails())
+            .then(eventBus.$emit('show-msg', msg))
             this.compose = false;
         },
         closeCompose(){
@@ -134,7 +156,6 @@ export default {
         },
         composeEmail(){
             this.compose = true;
-            debugger;
         },
         readEmail(emailId){
             console.log('reading email in app');
@@ -151,7 +172,7 @@ export default {
                 .then(() => this.loadEmails())
         },
 
-        unReadEmail(emailId){
+        unreadEmail(emailId){
             console.log('unreading the emial');
             emailService.getEmailById(emailId)
                 .then(email => {
@@ -163,22 +184,30 @@ export default {
         },
         readEmails(){
             this.selectedEmails.forEach(email => {
+                console.log(email);
                 this.readEmail(email.id)
+                this.loadEmails()
             });
         },
         unreadEmails(){
             this.selectedEmails.forEach(email => {
+                console.log(email);
                 this.unreadEmail(email.id)
+                this.loadEmails()
             });
         },
         selectEmails(selectedEmails){
             this.selectedEmails = selectedEmails.slice();
+            console.log(this.selectedEmails);
         },
         setReadFilter(readStatus){
             this.filter.starred = false;
             if (readStatus === 'all') this.filter.readStatus = 'all';
             else if (readStatus === 'read') this.filter.readStatus = 'read';
             else if (readStatus === 'unread') this.filter.readStatus = 'unread'; 
+        },
+        toggleMenu(){
+            this.isMobMenuHidden = !this.isMobMenuHidden;
         }
     },
 

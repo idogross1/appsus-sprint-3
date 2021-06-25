@@ -38,3 +38,20 @@ body{
     text-decoration: none;
     color: inherit;
 }
+
+/* USER MSG */
+
+.user-msg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+}
+
+.success {
+  background-color: rgb(37, 206, 37);
+}
+
+.error {
+  background-color: red;
+}
