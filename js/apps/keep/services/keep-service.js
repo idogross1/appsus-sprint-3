@@ -10,10 +10,23 @@ export const keepService = {
   addNote,
   deletetNote,
   updateNote,
+  getByTodoId,
 };
 
 function query() {
   return storageService.query(KEEPS_KEY);
+}
+
+function getByTodoId(todoId) {
+  return query().then((notes) => {
+    return notes.find((note) => {
+      if (note.type === 'noteTodos') {
+        return note.data.find((todo) => {
+          return todo.id === todoId;
+        });
+      }
+    });
+  });
 }
 
 function getById(noteId) {
@@ -24,7 +37,6 @@ function addNote(note) {
   if (note.type === 'noteTodos') {
     note.data.forEach((todo) => {
       todo.id = utilService.makeId(2);
-      console.log(todo);
     });
   }
   return storageService.post(KEEPS_KEY, note);

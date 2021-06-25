@@ -1,0 +1,23 @@
+.app-header {
+  /* border-bottom: 1px solid black; */
+  box-shadow: 0 0.5px 1px 0 black;
+  padding-block-end: 1rem;
+  width: 100%;
+}
+
+.app-header nav {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.app-header nav .apps-link {
+  display: flex;
+  gap: 30px;
+}
+
+.app-header nav .apps-link .keep-wrap {
+  display: flex;
+  align-items: flex-end;
+}

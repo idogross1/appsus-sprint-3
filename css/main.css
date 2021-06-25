@@ -1,5 +1,6 @@
 @import 'apps/mail/pages/email-app.css';
 @import './apps/keep/pages/keep-app.css';
+@import url('./cmps/header.css');
 
 /*helpers*/
 * {
@@ -16,16 +17,21 @@ p {
   margin: 0;
 }
 
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .flex {
   display: flex;
 }
 
 .flex-col {
   flex-direction: column;
-}
-
-body{
-    font-family: sans-serif;
 }
 
 .clean-list {
@@ -35,6 +41,6 @@ body{
 }
 
 .clean-link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,6 +1,6 @@
 import todoCmp from './todo-cmp.js';
-import { eventBus } from '../../../services/event-bus-service.js';
 import pickColor from './pick-color.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
   props: ['data', 'id'], //noteId

@@ -18,8 +18,11 @@ export default {
     },
 
     todoDone() {
+      if (this.edit) return;
       this.todo.isDone = !this.todo.isDone;
       console.log('todo--todo-cmp', this.todo.isDone);
+      console.log(this.todo);
+      eventBus.$emit('marked', this.todo);
     },
   },
 };

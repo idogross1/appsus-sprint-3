@@ -3,6 +3,7 @@ import noteAdd from '../cmps/note-add.js';
 import noteEdit from '../cmps/note-edit.js';
 import noteSearch from '../cmps/note-search.js';
 import { keepService } from '../services/keep-service.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
   template: `
@@ -28,6 +29,7 @@ export default {
 
   created() {
     this.loadNotes();
+    eventBus.$on('marked', this.marked);
   },
 
   methods: {
@@ -105,6 +107,19 @@ export default {
       });
 
       return notes;
+    },
+
+    marked(todo) {
+      keepService
+        .getByTodoId(todo.id)
+        .then((note) => {
+          const oldTodoIdx = note.data.findIndex((oldTodo) => {
+            if (oldTodo.id === todo.id) return oldTodo;
+          });
+          note.data.splice(oldTodoIdx, 1, todo);
+          keepService.updateNote(note);
+        })
+        .then(() => this.loadNotes());
     },
   },
 

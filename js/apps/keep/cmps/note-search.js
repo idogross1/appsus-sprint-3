@@ -1,7 +1,8 @@
 export default {
   template: `
-    <section>
+    <section class="note-search">
       <input type="search" v-model="str" @input="filter" placeholder="Search...">
+      <i class="fas fa-search"></i>
     </section>
     `,
 

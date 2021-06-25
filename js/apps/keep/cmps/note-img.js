@@ -1,4 +1,5 @@
 import { eventBus } from '../../../services/event-bus-service.js';
+import pickColor from './pick-color.js';
 
 export default {
   props: ['data', 'id'],
@@ -11,6 +12,8 @@ export default {
             </div>
             <!-- <div class="edit-note" v-if="isEditing" @input="update" >
             </div> -->
+          <pick-color v-if="isPickColor" @color="changeColor"></pick-color>
+
         </article>
       `,
 
@@ -18,11 +21,13 @@ export default {
     return {
       isEditing: false,
       noteCopy: this.data,
+      isPickColor: false,
     };
   },
 
   created() {
     eventBus.$on('edit', this.editNote);
+    eventBus.$on('color', this.pickColor);
   },
 
   methods: {
@@ -35,5 +40,22 @@ export default {
         this.isEditing = !this.isEditing;
       }
     },
+
+    pickColor(noteId) {
+      console.log('note-id--note-txt', noteId);
+      if (this.id === noteId) {
+        this.isPickColor = !this.isPickColor;
+      }
+    },
+
+    changeColor(color) {
+      console.log('color--note-txt ', color);
+      this.$emit('color', color);
+      this.isPickColor = false;
+    },
+  },
+
+  components: {
+    pickColor,
   },
 };
