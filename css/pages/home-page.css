@@ -1,0 +1,28 @@
+.home-page {
+  display: flex;
+  font-family: 'Nato';
+}
+
+.home-page > * {
+  padding: 30px;
+}
+
+.home-page .titles {
+  width: 40%;
+}
+
+.home-page img {
+  width: 60%;
+}
+
+.home-page .titles .main-title {
+  color: #252525;
+  font-size: 2rem;
+  line-height: 1.5rem;
+  padding-block-end: 2rem;
+}
+
+@font-face {
+  font-family: 'Nato';
+  src: url('../../fonts/Noto_Sans/NotoSans-Regular.ttf');
+}

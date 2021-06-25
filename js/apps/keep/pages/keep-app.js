@@ -2,6 +2,7 @@ import noteList from '../cmps/note-list.js';
 import noteAdd from '../cmps/note-add.js';
 import noteEdit from '../cmps/note-edit.js';
 import noteSearch from '../cmps/note-search.js';
+import userMsg from '../../../cmps/user-msg.js';
 import { keepService } from '../services/keep-service.js';
 import { eventBus } from '../../../services/event-bus-service.js';
 
@@ -43,14 +44,15 @@ export default {
 
     addNewNote(note) {
       keepService.addNote(note).then(() => this.loadNotes());
+      eventBus.$emit('show-msg', { txt: 'Note added', type: 'success' });
     },
 
     deleteNote(noteId) {
       keepService.deletetNote(noteId).then(() => this.loadNotes());
+      eventBus.$emit('show-msg', { txt: 'Note deleted', type: 'success' });
     },
 
     updateNote({ noteId, data }) {
-      console.log('test');
       keepService
         .getById(noteId)
         .then((note) => {
@@ -61,8 +63,6 @@ export default {
     },
 
     changeColor({ noteId, color }) {
-      console.log('noteId--keep-app', noteId);
-      console.log('color--keep-app', color);
       keepService
         .getById(noteId)
         .then((note) => {
@@ -74,12 +74,21 @@ export default {
     },
 
     pinNote(noteId) {
-      console.log('pin-note--keep-app', noteId);
       keepService
         .getById(noteId)
         .then((note) => {
           note.isPinned = !note.isPinned;
           keepService.updateNote(note);
+          if (note.isPinned)
+            eventBus.$emit('show-msg', {
+              txt: 'Note is pinned',
+              type: 'success',
+            });
+          else
+            eventBus.$emit('show-msg', {
+              txt: 'Note is unpinned',
+              type: 'success',
+            });
         })
         .then(() => this.loadNotes());
     },
@@ -128,5 +137,6 @@ export default {
     noteAdd,
     noteEdit,
     noteSearch,
+    userMsg,
   },
 };
