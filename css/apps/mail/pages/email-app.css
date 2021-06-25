@@ -2,11 +2,17 @@
 @import "../cmps/email-status.css";
 @import "../cmps/email-list.css";
 @import "../cmps/email-list-item.css";
+@import "../cmps/email-filter.css";
 
 .email-app{
-    padding-right: 50px;
-    padding-left: 50px;
+    /* padding-right: 50px;
+    padding-left: 50px; */
+    
     padding-top: 20px;
+
+
+    width: 90%;
+    margin: 0 auto;
 }
 
 /************email container*******************/
@@ -90,6 +96,20 @@
     line-height: 100%;
     border: none
 }
+
+.email-container .x{
+    /* justify-self: right; */
+    position: relative;
+    right: -80%;
+    color: #b3b3b3;
+}
+
+.email-container .x:hover{
+    background-color: #737373;
+    color: white;
+    cursor: pointer;
+}
+
 /*************/
 .bold {
     font-weight: bold;
@@ -97,12 +117,25 @@
 
 /*controls*/
 .controls{
-    width: 250px;
+    width: 200px;
     padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+    background-color: #e5e5e5;
+    width: 170px;
+    /* height: 50vh; */
+    overflow: auto;
+    position: fixed;/*change other*/
+    bottom: 0px
 }
 
 .controls *{
     height: 23px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 10px;
+    display: block;
+    
 }
 
 .controls *:hover{
@@ -120,7 +153,8 @@
     align-items: center;
     height: 60px;
     justify-content: flex-end;
-    background-color: rgb(236, 202, 8);
+    /* background-color: rgb(236, 202, 8); */
+    border-bottom: 2px solid rgb(240, 240, 240);
 }
 
 /*for small screen*/
@@ -131,34 +165,8 @@
     
 }
 
-.email-compose .x{
-    /* justify-self: right; */
-    position: relative;
-    right: -80%;
-    color: #b3b3b3;
-}
 
-.email-compose .x:hover{
-    background-color: #737373;
-    color: white;
-}
 
-.email-filter{
-    flex: 1;
-    
-}
-.email-filter input{
-    /* width: 44%; */
-    height: 46px;
-    width: 100%;
-    flex-basis: 1;
-    border-radius: 7px;
-    margin-bottom: 7px;
-    /* color: green; */
-}
-.email-header .logo{
-    width: 100px
-}
 
 
 .email-header .sort{
@@ -166,29 +174,53 @@
     margin-left: 10px;
 }
 
-.email-header .mob-menu img{
+.email-header .hamburger-container img{
     height: 46px;
 }
 
-.controls{
+/* .controls{
     display: none;
 }
 
 /*for big screen*/
 @media screen and (min-width: 825px) {
-    .email-header .mob-menu{
+    .email-header .hamburger-container{
         display: none;
     } 
+    .email-header .hamburger-container img{
+        height: 0px;
+        width: 0px;
+    }
     .controls{
-        display: block;
+        /* display: block; */
+        background-color: whitesmoke;
+        position: inherit;
+        width: inherit;
+        
     }
+    
+} 
 
-    .email-header .logo {
-        width: 250px; /*same as .controls*/
-    }
+.compose img{
+    height: 25px;
     
 }
 
-
+.compose{
+    height: 48px;
+    width: 150px;
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);
+    color: gray;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    gap: 12px;
+    justify-items: flex-start;
+    /* background-color: red; */
+}
 
 

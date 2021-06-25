@@ -10,7 +10,8 @@
 }
 
 .email-list-item:hover {
-    background-color: rgb(253, 250, 87);
+    /* background-color: rgb(253, 250, 87); */
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.24);
 }
 
 .email-list-item *:not(:first-child){
@@ -19,7 +20,7 @@
 
 .email-list-item{
     height: 30px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(240, 240, 240);
     align-items: center;
     justify-content: flex-end;
 }

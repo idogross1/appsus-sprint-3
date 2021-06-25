@@ -16,8 +16,10 @@ export default {
     data(){
         return {
             email: {
-                subject: this.$route.params.emailSubject ? 'Re:' + this.$route.params.emailSubject: '',
-                body:  this.$route.params.emailSubject ? '\n'+this.$route.params.emailBody: '',
+                // subject: this.$route.params.emailSubject ? 'Re:' + this.$route.params.emailSubject: '',
+                // body:  this.$route.params.emailSubject ? '\n'+this.$route.params.emailBody: '',
+                subject: this.$route.params.emailSubject,
+                body: '\n' + this.$route.params.emailBody
             }
         }
     },

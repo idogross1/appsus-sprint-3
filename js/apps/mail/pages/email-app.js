@@ -18,17 +18,19 @@ export default {
   template: `
         <section v-if="emails.length" class="email-app flex flex-col">
             <div class="flex email-header">
-                <div class="mob-menu" @click="toggleMenu"><img src="../../../../img/hamburger.png"/></div>
-                <div class="logo">LOGO IMG</div>
+                <div class="hamburger-container" @click="toggleMenu"><img src="../../../../img/hamburger.png"/></div>
+                <div  @click="composeEmail" class="compose">
+                    <img src="../../../../img/mail/compose.PNG" alt="">
+                    <span>Compose</span>
+                </div>
+                
+                <!-- <button @click="composeEmail" class="compose">Compose</button> -->
                 <email-filter @filter="filterEmails"> </email-filter>
                 <button class="sort" @click="sortEmails('date')">sort by date</button>
                 <button class="sort" @click="sortEmails('title')">sort by title</button>
             </div>  
             <div class="flex">
-                <!-- <div class="controls" :class="{'hidden': isMobMenuHidden}>  -->
-                    <div class="controls" :class="{'hidden': isMobMenuHidden}"> 
-                        <button @click="composeEmail" >Compose</button>
-                        <!-- <email-edit @send="addEmail" v-if="compose"></email-edit> -->
+                    <!-- <div class="controls" :class="{'hidden': isMobMenuHidden}"> 
                         <div @click="readEmails">Mark as read</div>
                         <div @click="unreadEmails">Mark as unread</div>
                         <div @click="setReadFilter('read')">show read</div>
@@ -37,7 +39,22 @@ export default {
                         <div @click="showStarred">show starred</div>
                         
                         <email-status :emails="emails"> </email-status>
+                    </div> -->
+
+
+                    <div class="controls" :style="{display:getMenuDisplayProp}" >
+                        <!-- <email-edit @send="addEmail" v-if="compose"></email-edit> -->
+                         <div @click="readEmails">Mark as read</div>
+                        <div @click="unreadEmails">Mark as unread</div>
+                        <div @click="setReadFilter('read')">show read</div>
+                        <div @click="setReadFilter('unread')">show unread</div>
+                        <div @click="setReadFilter('all')">show all</div>
+                        <div @click="showStarred">show starred</div>
+                        
+                        <email-status :emails="emails"> </email-status>
                     </div>
+
+
                     <email-list @click="testFunction"  @replyToEmail=addEmail @toggleStar="toggleStar" @selectEmails="selectEmails" :emails="emailsToShow" @readEmail="readEmail" @unReadEmail="unreadEmail"/>
                     <email-compose @send="addEmail" @closeCompose="closeCompose" v-if="compose"></email-compose>
                     <!-- <email-details v-if="currEmail"></email-details> -->
@@ -56,7 +73,10 @@ export default {
                 starred: false
             },
             selectedEmails: [],
-            isMobMenuHidden: true,
+            // isMobMenuHidden: true,
+
+
+            menuDisplayProp: 'none'
         }
     },
     created(){
@@ -70,6 +90,12 @@ export default {
     },
 
     computed: {
+        getMenuDisplayProp(){
+            if (window.innerWidth > 825) return 'block';
+            console.log(this.menuDisplayProp);
+            return this.menuDisplayProp;
+        },
+
         emailsToShow(){
             var filteredEmails = this.emails;
             if (this.filter.filterStr === '' && this.filter.readStatus === ALL && this.filter.starred === false) return this.emails
@@ -211,7 +237,10 @@ export default {
             else if (readStatus === 'unread') this.filter.readStatus = 'unread'; 
         },
         toggleMenu(){
-            this.isMobMenuHidden = !this.isMobMenuHidden;
+            // this.isMobMenuHidden = !this.isMobMenuHidden;
+            if (this.menuDisplayProp === 'block') this.menuDisplayProp = 'none';
+            else this.menuDisplayProp = 'block'
+            console.log('toggling menu...', this.menuDisplayProp);
         }
     },
 

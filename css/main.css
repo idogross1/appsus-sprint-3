@@ -32,6 +32,8 @@ a {
   display: flex;
 }
 
+/***HELPER CLASSES*****/
+
 .flex-col {
   flex-direction: column;
 }
@@ -45,6 +47,10 @@ a {
 .clean-link {
   text-decoration: none;
   color: inherit;
+}
+
+.pointer:hover{
+  cursor: pointer;
 }
 
 /* USER MSG */

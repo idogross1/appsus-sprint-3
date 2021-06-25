@@ -17,7 +17,7 @@ export default {
             <img class="" src="../../../img/mail/markRead.png"/>
         </button>
         <!-- <router-link :to="''/edit/'+email.subject+'/'+email.body+'">reply</router-link> -->
-        <router-link class="clean-link" :to="'/edit/'+email.subject+'/'+email.body" @send="replyToEmail">reply</router-link>
+        <router-link class="clean-link" :to="'/edit/Re: '+email.subject+'/> '+email.body" @send="replyToEmail">reply</router-link>
         <div class="star" @click="toggleStar()" :class="isStarredClass" >✰</div>
         <div class="select" @click="select()"><p v-if="isSelected">✓</p></div>
     </section>
