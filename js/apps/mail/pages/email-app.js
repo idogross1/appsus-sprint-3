@@ -42,7 +42,7 @@ export default {
                     <email-compose @send="addEmail" @closeCompose="closeCompose" v-if="compose"></email-compose>
                     <!-- <email-details v-if="currEmail"></email-details> -->
                 </div>
-                <user-msg/>
+                <user-msg />
             </section>
             `,
     data(){
@@ -65,7 +65,8 @@ export default {
             text: 'book review saved',
             type: 'success'
         }
-        eventBus.$emit('show-msg', message)
+        //TODO ev bus listener $on
+        // eventBus.$emit('show-msg', message)
     },
 
     computed: {
@@ -148,8 +149,11 @@ export default {
             console.log('adding email in app...', email);
             emailService.addEmail(email.subject, email.body)
             .then(() => this.loadEmails())
-            .then(eventBus.$emit('show-msg', msg))
+            .then(()=>{
+                var msg={text: '123'}
+                eventBus.$emit('show-msg', msg)
             this.compose = false;
+            })
         },
         closeCompose(){
             this.compose = false;

@@ -12,7 +12,7 @@
 /************email container*******************/
 .email-container{
     position: fixed;
-    /* background-color: mediumseagreen; */
+    background-color: #f5f7f7;
     /* border-radius: 10px; */
     /* padding: 20px; */
     /* margin: 0; */
@@ -25,21 +25,23 @@
 
 .email-container textarea{
     display: block;
-    width: 75vw;
+    width: 90%;
+    margin-left: auto;
+            margin-right: auto;
+    color: red
 }
 @media screen and (min-width: 550px){
     .email-container textarea{
-        width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+        width: 80%;
+            color: orange;
 
     }
 }
-
+/*big screen*/
 @media screen and (min-width: 825px) {
     .email-container textarea{
         /* overflow: hidden; */
-        width: 80%;
+        color: green
     }
 }
 
@@ -71,6 +73,7 @@
     background-color: #404040;
     color: white;
     border-radius: 10px 10px 0 0 ;
+    width: 100%
 }
 
 .email-container .subject{
@@ -80,6 +83,12 @@
 .email-container .email-button{
     background-color: #1a73e8;
     color: white;
+    height: 32px;
+    width: 74px;
+    border-radius: 5px;
+    /* line-height: 32px; */
+    line-height: 100%;
+    border: none
 }
 /*************/
 .bold {
