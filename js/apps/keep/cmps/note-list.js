@@ -10,9 +10,8 @@ export default {
 
   template: `
   <ul class="note-list clean-list">
-    <!-- <li class="note-item" v-for="note in notes" :key="note.id" :style="{backgroundColor : note.color, borderColor: borderColor}"> -->
     <li class="note-item" v-for="note in notes" :key="note.id" :style="{backgroundColor : note.color, borderColor: note.color === '#fffffc' ? '#1c1c1c' : note.color}">
-      <div class="pin-note" @click="onPinNote(note.id)"><i class="fas fa-thumbtack"></i></div>
+      <div class="pin-note" :class="{active: note.isPinned}" @click="onPinNote(note.id)"><i class="fas fa-thumbtack"></i></div>
       <component  :edit="isEditable" :is="note.type" :data="note.data" :id="note.id" @updateData="updateData($event, note.id)" @color="changeColor($event,note.id)">
         </component>
         <note-toolbar  :noteId="note.id" @delete="deleteNode($event)" @editNote="editNote($event)" @pickColor="pickColor(note.id)" @send="sendEmail"></note-toolbar>
