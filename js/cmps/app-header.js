@@ -3,7 +3,8 @@ export default {
         <div class="app-header">
             <nav>
                 <div class="logo-container">
-                    HELLO!!!
+                    <img  src="img/kiwi-bird.svg" alt="">
+                    <span>Appsus</span>
                 </div>
                 <div class="apps-link">
                     <div class="home-wrap">

@@ -7,11 +7,22 @@
   margin-bottom: 15px;
 }
 
+.app-header .logo-container {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.app-header .logo-container span {
+  font-size: 22px;
+}
+
 .app-header nav {
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
   padding: 10px 20px;
+  align-items: baseline;
 }
 
 .app-header nav .apps-link {
@@ -21,6 +32,10 @@
 
 .apps-link > * {
   padding-right: 5px;
+}
+
+.logo-color {
+  --fa-primary-color: yellow;
 }
 
 @media screen and (max-width: 650px) {
