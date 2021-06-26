@@ -11,15 +11,9 @@ export default {
     <section class="keep-app">
       <note-search @filter="setFilter"></note-search>
       <note-add @newNote="addNewNote"></note-add>
-<<<<<<< HEAD
       <note-list v-if="filterdNotes" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="filterdNotes" @send="sendEmail"></note-list>
       <note-list v-if="pinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="pinnedNotes" @send="sendEmail"></note-list>
       <note-list v-if="unPinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="unPinnedNotes" @send="sendEmail"></note-list>
-=======
-      <note-list v-if="filterdNotes" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="filterdNotes"></note-list>
-      <note-list v-if="pinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="pinnedNotes"></note-list>
-      <note-list v-if="unPinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="unPinnedNotes"></note-list>
->>>>>>> 809736745606aaf738b1498cd955478232ad90b8
     </section>
       `,
 
