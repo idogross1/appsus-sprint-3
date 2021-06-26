@@ -3,7 +3,7 @@ export default {
 
   template: `
         <section class="note-toolbar">
-          <div @click="onDeleteNote"><i class="far fa-trash-alt"></i></div>
+          <div @click="onDeleteNote" @mouseover="hover" :class="{animate__animated:over, animate__bounce:over}"><i class="far fa-trash-alt"></i></div>
           <div v-if="edit" @click.stop="onEditNote"><i class="far fa-edit"></i></div>
           <div v-if="!edit" @click.stop="onEditNote"><i class="far fa-save"></i></div>
           <div @click="onShare"><i class="far fa-paper-plane"></i></div>
@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       edit: true,
+      over: false,
     };
   },
 
@@ -33,6 +34,11 @@ export default {
 
     onShare() {
       this.$emit('send', this.noteId);
+    },
+
+    hover() {
+      console.log('test');
+      this.over = true;
     },
   },
 };

@@ -2,7 +2,7 @@
 @import './apps/keep/pages/keep-app.css';
 @import url('./cmps/header.css');
 @import url('./pages/home-page.css');
-
+@import url('../lib/animate.min.css');
 /*helpers*/
 * {
   box-sizing: border-box;
@@ -49,7 +49,7 @@ a {
   color: inherit;
 }
 
-.pointer:hover{
+.pointer:hover {
   cursor: pointer;
 }
 
