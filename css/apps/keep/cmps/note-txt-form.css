@@ -1,0 +1,50 @@
+.note-txt-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  height: 90px;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px 15px;
+  gap: 15px;
+  /* box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%); */
+  font-size: 18px;
+}
+
+.note-txt-form i {
+  color: #797979;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.note-txt-form i:hover {
+  color: #4e4e4e;
+  border-radius: 50%;
+  background-color: #a8a8a8;
+}
+
+.note-txt-form .input-pin {
+  display: flex;
+  width: 100%;
+}
+
+.note-txt-form .input-pin input {
+  /* width: 100%; */
+  width: 500px;
+  height: 100%;
+  border-radius: 3px;
+  border: 0;
+  font-size: 18px;
+  /* top: 0;
+  left: 0; */
+}
+
+.note-txt-form .options-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.note-txt-form .options-bar .add-delete-wrap {
+  display: flex;
+}

@@ -1,0 +1,80 @@
+@import 'apps/mail/pages/email-app.css';
+@import './apps/keep/pages/keep-app.css';
+@import url('./cmps/header.css');
+@import url('./pages/home-page.css');
+
+/*helpers*/
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #494949;
+}
+
+.flex {
+  display: flex;
+}
+
+/***HELPER CLASSES*****/
+
+.flex-col {
+  flex-direction: column;
+}
+
+.clean-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.clean-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
+
+/* USER MSG */
+
+.user-msg {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  background-color: #202124;
+  color: #e7e7e8;
+  display: flex;
+  gap: 20px;
+}
+
+.user-msg .close-msg {
+  color: #82a9e8;
+  cursor: pointer;
+}
+/* .success {
+  background-color: rgb(37, 206, 37);
+}
+
+.error {
+  background-color: red;
+} */

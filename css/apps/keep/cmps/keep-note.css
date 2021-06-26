@@ -1,0 +1,46 @@
+@import './note-img.css';
+@import url('./note-todo.css');
+
+.note-item {
+  background-color: white;
+  border: 1px solid rgb(150, 150, 150);
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.5rem;
+  padding: 0.5rem 1rem; */
+  max-width: 240px;
+  min-width: 200px;
+  height: fit-content;
+  border-radius: 7px;
+  word-wrap: break-word;
+  break-inside: avoid;
+  margin-top: 0;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.note-item .pin-note {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.note-item i {
+  cursor: pointer;
+  font-size: 16px;
+  color: #797979;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.note-item i:hover {
+  color: #4e4e4e;
+  border-radius: 50%;
+  background-color: #a8a8a8;
+}
+
+@media screen and (max-width: 600px) {
+  .note-item {
+    max-width: 100%;
+  }
+}

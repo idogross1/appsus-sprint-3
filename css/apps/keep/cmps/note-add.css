@@ -1,0 +1,43 @@
+.note-add {
+  display: flex;
+  width: 600px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 15px 15px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  color: #8b9095;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.choose-note-add {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.list-image-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.list-image-wrap i {
+  color: #797979;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.list-image-wrap i:hover {
+  color: #4e4e4e;
+  border-radius: 50%;
+  background-color: #a8a8a8;
+}
+
+@media screen and (max-width: 650px) {
+  .note-add {
+    max-width: 100%;
+  }
+}

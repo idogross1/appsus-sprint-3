@@ -1,0 +1,19 @@
+
+
+.email-preview .show-all{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: gray;
+    color: white;
+    height: 30px;
+    text-align: center;
+}
+
+.email-preview {
+    white-space:nowrap;
+    overflow:hidden;
+    flex:1;
+    text-overflow:ellipsis;
+}
+

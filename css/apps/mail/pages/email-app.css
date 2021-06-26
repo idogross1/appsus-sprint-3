@@ -1,0 +1,226 @@
+@import "../cmps/email-preview.css";
+@import "../cmps/email-status.css";
+@import "../cmps/email-list.css";
+@import "../cmps/email-list-item.css";
+@import "../cmps/email-filter.css";
+
+.email-app{
+    /* padding-right: 50px;
+    padding-left: 50px; */
+    
+    padding-top: 20px;
+
+
+    width: 90%;
+    margin: 0 auto;
+}
+
+/************email container*******************/
+.email-container{
+    position: fixed;
+    background-color: #f5f7f7;
+    /* border-radius: 10px; */
+    /* padding: 20px; */
+    /* margin: 0; */
+    /* 580*450 */
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80vw;
+    border: 1px solid rgb(245, 231, 231);
+}
+
+.email-container textarea{
+    display: block;
+    width: 90%;
+    margin-left: auto;
+            margin-right: auto;
+    color: red
+}
+@media screen and (min-width: 550px){
+    .email-container textarea{
+        width: 80%;
+            color: orange;
+
+    }
+}
+/*big screen*/
+@media screen and (min-width: 825px) {
+    .email-container textarea{
+        /* overflow: hidden; */
+        color: green
+    }
+}
+
+.email-container>*{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.email-container *{
+    line-height: 40px;
+}
+@media screen and (max-width: 500) {
+    
+}
+
+@media screen and (max-width: 980) {
+    .email-container{
+    }
+}
+
+@media screen and (max-width: 1130) {
+    
+}
+
+
+/* BP 1130 980 500 */
+
+.email-container .message{
+    background-color: #404040;
+    color: white;
+    border-radius: 10px 10px 0 0 ;
+    width: 100%
+}
+
+.email-container .subject{
+    color: #777777;
+}
+
+.email-container .email-button{
+    background-color: #1a73e8;
+    color: white;
+    height: 32px;
+    width: 74px;
+    border-radius: 5px;
+    /* line-height: 32px; */
+    line-height: 100%;
+    border: none
+}
+
+.email-container .x{
+    /* justify-self: right; */
+    position: relative;
+    right: -80%;
+    color: #b3b3b3;
+}
+
+.email-container .x:hover{
+    background-color: #737373;
+    color: white;
+    cursor: pointer;
+}
+
+/*************/
+.bold {
+    font-weight: bold;
+}
+
+/*controls*/
+.controls{
+    width: 200px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+    background-color: #e5e5e5;
+    width: 170px;
+    /* height: 50vh; */
+    overflow: auto;
+    position: fixed;/*change other*/
+    bottom: 0px
+}
+
+.controls *{
+    height: 23px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 10px;
+    display: block;
+    
+}
+
+.controls *:hover{
+    background-color: #f5f7f7;
+}
+.controls *:active{
+    background-color: lightpink;
+    color: red;
+}
+
+
+
+.email-header{
+    padding:10px;
+    align-items: center;
+    height: 60px;
+    justify-content: flex-end;
+    /* background-color: rgb(236, 202, 8); */
+    border-bottom: 2px solid rgb(240, 240, 240);
+}
+
+/*for small screen*/
+@media screen and (max-width: 825px) {
+    .email-header{
+        width: 70vw;
+    }
+    
+}
+
+
+
+
+
+.email-header .sort{
+    height:22px;
+    margin-left: 10px;
+}
+
+.email-header .hamburger-container img{
+    height: 46px;
+}
+
+/* .controls{
+    display: none;
+}
+
+/*for big screen*/
+@media screen and (min-width: 825px) {
+    .email-header .hamburger-container{
+        display: none;
+    } 
+    .email-header .hamburger-container img{
+        height: 0px;
+        width: 0px;
+    }
+    .controls{
+        /* display: block; */
+        background-color: whitesmoke;
+        position: inherit;
+        width: inherit;
+        
+    }
+    
+} 
+
+.compose img{
+    height: 25px;
+    
+}
+
+.compose{
+    height: 48px;
+    width: 150px;
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);
+    color: gray;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    gap: 12px;
+    justify-items: flex-start;
+    /* background-color: red; */
+}
+
+

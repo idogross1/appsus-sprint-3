@@ -1,0 +1,50 @@
+.app-header {
+  /* border-bottom: 1px solid black; */
+  box-shadow: 0 0.5px 1px 0 #a5a5a5;
+  padding-block-end: 1rem;
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 15px;
+}
+
+.app-header nav {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.app-header nav .apps-link {
+  display: flex;
+  gap: 30px;
+}
+
+.apps-link > * {
+  padding-right: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .app-header {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0 -1px 10px 0 #a5a5a5;
+    margin-bottom: 0;
+  }
+
+  .app-header nav {
+    display: block;
+  }
+  .app-header .logo-container {
+    display: none;
+  }
+
+  .app-header a span {
+    display: none;
+  }
+
+  .app-header .apps-link {
+    justify-content: space-between;
+  }
+}

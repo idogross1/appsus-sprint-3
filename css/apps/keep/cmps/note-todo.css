@@ -1,0 +1,13 @@
+/* .note-todo {
+  position: relative;
+} */
+
+.marked {
+  text-decoration: line-through;
+}
+
+.note-todo {
+  padding: 10px 20px;
+  cursor: pointer;
+  direction: ltr;
+}
