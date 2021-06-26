@@ -15,11 +15,7 @@ export default {
       <div class="pin-note" @click="onPinNote(note.id)"><i class="fas fa-thumbtack"></i></div>
       <component  :edit="isEditable" :is="note.type" :data="note.data" :id="note.id" @updateData="updateData($event, note.id)" @color="changeColor($event,note.id)">
         </component>
-<<<<<<< HEAD
         <note-toolbar  :noteId="note.id" @delete="deleteNode($event)" @editNote="editNote($event)" @pickColor="pickColor(note.id)" @send="sendEmail"></note-toolbar>
-=======
-        <note-toolbar  :noteId="note.id" @delete="deleteNode($event)" @editNote="editNote($event)" @pickColor="pickColor(note.id)"></note-toolbar>
->>>>>>> 809736745606aaf738b1498cd955478232ad90b8
         <!-- <pick-color v-if="isPickColor"></pick-color> -->
 
     </li>
@@ -64,13 +60,10 @@ export default {
       console.log('pin-note--note-list', noteId);
       this.$emit('pin', noteId);
     },
-<<<<<<< HEAD
 
     sendEmail(noteId) {
       this.$emit('send', noteId);
     },
-=======
->>>>>>> 809736745606aaf738b1498cd955478232ad90b8
   },
 
   computed: {

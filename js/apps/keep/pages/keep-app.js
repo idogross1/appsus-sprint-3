@@ -136,7 +136,6 @@ export default {
         })
         .then(() => this.loadNotes());
     },
-<<<<<<< HEAD
 
     sendEmail(noteId) {
       keepService.getById(noteId).then((note) => {
@@ -156,8 +155,6 @@ export default {
         }
       });
     },
-=======
->>>>>>> 809736745606aaf738b1498cd955478232ad90b8
   },
 
   components: {
