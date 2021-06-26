@@ -11,9 +11,9 @@ export default {
     <section class="keep-app">
       <note-search @filter="setFilter"></note-search>
       <note-add @newNote="addNewNote"></note-add>
-      <note-list v-if="filterdNotes" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="filterdNotes"></note-list>
-      <note-list v-if="pinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="pinnedNotes"></note-list>
-      <note-list v-if="unPinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="unPinnedNotes"></note-list>
+      <note-list v-if="filterdNotes" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="filterdNotes" @send="sendEmail"></note-list>
+      <note-list v-if="pinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="pinnedNotes" @send="sendEmail"></note-list>
+      <note-list v-if="unPinnedNotes.length && !filterdNotes.length" @pin="pinNote" @deleteNote="deleteNote" @update="updateNote" @color="changeColor" :notes="unPinnedNotes" @send="sendEmail"></note-list>
     </section>
       `,
 
@@ -129,6 +129,25 @@ export default {
           keepService.updateNote(note);
         })
         .then(() => this.loadNotes());
+    },
+
+    sendEmail(noteId) {
+      keepService.getById(noteId).then((note) => {
+        console.log(note);
+        if (note.type === 'noteTxt') {
+          this.$router.push('/edit/From keep/' + note.data);
+        }
+
+        if (note.type === 'noteTodos') {
+          const msg = note.data
+            .map((todo) => {
+              console.log(todo.txt);
+              return todo.txt;
+            })
+            .join(', ');
+          this.$router.push('/edit/From keep/' + msg);
+        }
+      });
     },
   },
 

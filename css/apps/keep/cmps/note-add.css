@@ -35,3 +35,9 @@
   border-radius: 50%;
   background-color: #a8a8a8;
 }
+
+@media screen and (max-width: 650px) {
+  .note-add {
+    max-width: 100%;
+  }
+}

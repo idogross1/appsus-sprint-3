@@ -16,3 +16,9 @@
 .note-toolbar {
   display: flex;
 }
+
+@media screen and (max-width: 600px) {
+  .note-list {
+    grid-template-columns: 1fr;
+  }
+}

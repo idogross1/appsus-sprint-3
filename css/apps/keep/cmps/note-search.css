@@ -34,3 +34,9 @@
   font-size: 18px;
   color: #6f6f70;
 }
+
+@media screen and (max-width: 600px) {
+  .note-search {
+    max-width: 100%;
+  }
+}

@@ -3,13 +3,10 @@ export default {
 
   template: `
         <section class="note-toolbar">
-          <!-- <button @click="onDeleteNote">x</button> -->
-          <!-- <button v-if="edit" @click.stop="onEditNote">edit</button> -->
-          <!-- <button v-if="!edit" @click.stop="onEditNote">save</button> -->
-          <!-- <button @click="onPickColor">color</button> -->
           <div @click="onDeleteNote"><i class="far fa-trash-alt"></i></div>
           <div v-if="edit" @click.stop="onEditNote"><i class="far fa-edit"></i></div>
           <div v-if="!edit" @click.stop="onEditNote"><i class="far fa-save"></i></div>
+          <div @click="onShare"><i class="far fa-paper-plane"></i></div>
           <div @click="onPickColor"><i class="fas fa-palette"></i></div>
         </section>
     `,
@@ -34,8 +31,8 @@ export default {
       this.$emit('pickColor');
     },
 
-    // onSaveNote() {
-    //   this.edit = true;
-    // },
+    onShare() {
+      this.$emit('send', this.noteId);
+    },
   },
 };

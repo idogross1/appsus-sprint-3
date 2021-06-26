@@ -26,3 +26,15 @@
   font-family: 'Nato';
   src: url('../../fonts/Noto_Sans/NotoSans-Regular.ttf');
 }
+
+@media screen and (max-width: 600px) {
+  .home-page {
+    flex-direction: column;
+  }
+  .home-page .titles {
+    width: 100%;
+  }
+  .home-page img {
+    width: 100%;
+  }
+}
