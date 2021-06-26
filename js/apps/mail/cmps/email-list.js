@@ -3,7 +3,7 @@ import emailListItem from "./email-list-item.js";
 export default {
     props: ['emails'],
     template: `
-        <section class="email-list">
+        <section class="email-list" :style='{height: emailListHeight}'>
             <li v-for="email in emails" @delete="">
                <email-list-item :email="email" @replyToEmail="replyToEmail" @isSelected="isSelected" @toggleReadEmail="toggleReadEmail" @toggleStar="toggleStar" @select="select"/>
             </li>
@@ -43,5 +43,15 @@ export default {
             }
             this.$emit('selectEmails', this.selectedEmails)
         }
+    },
+    created(){
+        console.log(window.innerHeight - 255 - 10);
+
+    },
+    computed: {
+        emailListHeight(){
+            return window.innerHeight - 255 - 10 + 'px';
+        }
+        
     }
 }

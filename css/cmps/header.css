@@ -5,6 +5,10 @@
   width: 100%;
   padding-top: 10px;
   margin-bottom: 15px;
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  background-color: white;
 }
 
 .app-header .logo-container {
@@ -41,8 +45,9 @@
 @media screen and (max-width: 650px) {
   .app-header {
     position: fixed;
+    top: inherit;
     bottom: 0;
-    z-index: 1;
+    /* z-index: 1; */
     background-color: white;
     box-shadow: 0 -1px 10px 0 #a5a5a5;
     margin-bottom: 0;
