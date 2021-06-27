@@ -21,25 +21,17 @@ export default {
                 <div class="hamburger-container" @click="toggleMenu"><img src="../../../../img/hamburger.png"/></div>
                 <div  @click="composeEmail" class="compose">
                     <img src="../../../../img/mail/compose.PNG" alt="">
-                    <span>Compose</span>
+                    <span class="compose-text">Compose</span>
                 </div>
                 
                 <!-- <button @click="composeEmail" class="compose">Compose</button> -->
                 <email-filter @filter="filterEmails"> </email-filter>
-                <button class="sort" @click="sortEmails('date')">sort by date</button>
-                <button class="sort" @click="sortEmails('title')">sort by title</button>
+                <button class="sort mob" @click="sortEmails('date')"><img src="../../../../img/mail/sortdate.png" > </button>
+                <button class="sort mob" @click="sortEmails('title')"><img src="../../../../img/mail/sortabc.png" ></button>
+                <button class="sort comp" @click="sortEmails('date')">sort by date</button>
+                <button class="sort comp" @click="sortEmails('title')">sort by title</button>
             </div>  
             <div class="flex">
-                    <!-- <div class="controls" :class="{'hidden': isMobMenuHidden}"> 
-                        <div @click="readEmails">Mark as read</div>
-                        <div @click="unreadEmails">Mark as unread</div>
-                        <div @click="setReadFilter('read')">show read</div>
-                        <div @click="setReadFilter('unread')">show unread</div>
-                        <div @click="setReadFilter('all')">show all</div>
-                        <div @click="showStarred">show starred</div>
-                        
-                        <email-status :emails="emails"> </email-status>
-                    </div> -->
 
 
                     <div class="controls" :style="{display:getMenuDisplayProp}" >
@@ -49,6 +41,7 @@ export default {
                         <div @click="setReadFilter('read')">show read</div>
                         <div @click="setReadFilter('unread')">show unread</div>
                         <div @click="setReadFilter('all')">show all</div>
+                        
                         <div @click="showStarred">show starred</div>
                         
                         <email-status :emails="emails"> </email-status>

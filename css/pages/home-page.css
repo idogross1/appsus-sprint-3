@@ -1,6 +1,7 @@
 .home-page {
   display: flex;
   font-family: 'Nato';
+  margin-top: 135px;
 }
 
 .home-page > * {

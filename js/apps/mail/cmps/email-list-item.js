@@ -6,6 +6,7 @@ export default {
     template: `
     <section class="email-list-item flex" v-bind:class="{'read': this.email.isRead, 'unread': !this.email.isRead, 'long-preview': isLong}">
         <!-- <router-link :to="'/details/' +email.id " class="email-link clean-link"> -->
+        <div class="select" @click="select()"><p v-if="isSelected">✓</p></div>
         <email-preview @toggleLength="toggleLength" :email="email" class="email-link"/>
         <!-- </router-link> -->
         <button v-if="email.isRead" @click="toggleReadEmail()" class="toggle-read toggle-read-text  ">mark as unread</button>
@@ -19,7 +20,6 @@ export default {
         <!-- <router-link :to="''/edit/'+email.subject+'/'+email.body+'">reply</router-link> -->
         <router-link class="clean-link" :to="'/edit/Re: '+email.subject+'/> '+email.body" @send="replyToEmail">reply</router-link>
         <div class="star" @click="toggleStar()" :class="isStarredClass" >✰</div>
-        <div class="select" @click="select()"><p v-if="isSelected">✓</p></div>
     </section>
     `,
     computed: {

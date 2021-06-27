@@ -3,7 +3,7 @@ import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     template: `
-        <section class="email-compose email-container flex flex-col">
+        <section class="email-compose email-container flex flex-col email-edit">
         <p class="message">Reply <span class="clean-link x" @click="closeCompose">x</span></p>
         <form @submit.prevent="send">
             <textarea class="email-subject" rows="1" cols="80" type="text" placeholder="subject" v-model="email.subject"></textarea>

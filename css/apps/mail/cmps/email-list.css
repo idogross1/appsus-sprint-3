@@ -11,7 +11,7 @@
 @media screen and (min-width: 825px) {
     .email-list{
         max-width: 70vw;
-
+        margin-top: 35px;
     }
 }
 

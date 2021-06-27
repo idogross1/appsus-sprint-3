@@ -4,11 +4,9 @@ import { eventBus } from "../../../services/event-bus-service.js";
 export default {
     template: `
         <section v-if="email" class="email-details email-container flex flex-col">
-                <p class="message">Current email</p>
-               
+                <p class="message">Current email <span class="clean-link x" @click="closeEmail">x</span></p>
                 <textarea class="email-subject" rows="1" cols="80">{{email.subject}} </textarea>
                 <textarea class="emailBody" rows="8" cols="80">{{email.body}}</textarea>
-                <router-link class="email-button" :to="'/mail'">Close</router-link>
                 
                 <button class="delete email-button" @click="deleteEmail">delete
                     <!-- <router-link @click=deleteEmail class="email-button" :to="'/mail'">delete</router-link> -->
@@ -31,6 +29,9 @@ export default {
                 this.$router.push('/mail')
             })
             .then(()=> eventBus.$emit('show-msg', $msg))
+        },
+        closeEmail(){
+            this.$router.push('/mail')
         }
     },
     created(){
